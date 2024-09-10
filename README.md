@@ -1,2 +1,2 @@
 # System_Management_Web
- PSC
+ A Login and Register system for PSC web development project.
