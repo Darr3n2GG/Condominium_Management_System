@@ -56,6 +56,9 @@ body {
     background-color: #2868c7;
     transition: background-color 0.2s;
 }
+.login a{
+    margin: 0;
+}
 .navtop {
 	background-color: #2f3947;
 	height: 60px;
