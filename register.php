@@ -51,7 +51,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
             $stmt->execute();
-            echo 'You have successfully registered! You can now login!';
+            echo nl2br('You have successfully registered! You can now login! Enter http://localhost/System_Management_Web/login.html.');
         } else {
             // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all three fields.
             echo 'Could not prepare statement!';
