@@ -56,8 +56,9 @@ body {
     background-color: #2868c7;
     transition: background-color 0.2s;
 }
-.login a{
-    margin: 0;
+.login .link{
+    text-align: center;
+    justify-content: center;
 }
 .navtop {
 	background-color: #2f3947;
