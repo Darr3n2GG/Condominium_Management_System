@@ -6,7 +6,7 @@
 
 # Instructions
 After downloading xampp and the zip file,
-1. extract zip file into xampp htdocs
+1. extract zip file into xampp htdocs folder
 2. go to http://localhost/phpmyadmin/index.php
 3. create a new xampp database named "exampledb"
 4. go to SQL (located at the top bar)
