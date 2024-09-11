@@ -7,10 +7,11 @@
 # Instructions
 After downloading xampp and the zip file,
 1. extract zip file into xampp htdocs folder
-2. go to http://localhost/phpmyadmin/index.php
-3. create a new xampp database named "exampledb"
-4. go to SQL (located at the top bar)
-5. Ctrl C + Ctrl V the code below and run SQL:
+2. run Apache and MySQL in xampp control panel
+3. go to http://localhost/phpmyadmin/index.php
+4. create a new xampp database named "exampledb"
+5. go to SQL (located at the top bar)
+6. Ctrl C + Ctrl V the code below and run SQL:
 ```
 CREATE TABLE IF NOT EXISTS accounts (
     id int(11) NOT NULL AUTO_INCREMENT,
