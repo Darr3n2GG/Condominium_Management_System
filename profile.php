@@ -49,10 +49,7 @@ $stmt->close();
 						<td>Username:</td>
 						<td><?=htmlspecialchars($_SESSION['name'], ENT_QUOTES)?></td>
 					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><?=htmlspecialchars($password, ENT_QUOTES)?></td>
-					</tr>
+					<!--Password line is removed, as it can't be decrypted/'unhashed' -->
 					<tr>
 						<td>Email:</td>
 						<td><?=htmlspecialchars($email, ENT_QUOTES)?></td>
