@@ -3,7 +3,6 @@
 
 # Dependencies
 1. Xampp
-2. exampledb database
 
 # Instructions
 After downloading xampp and the zip file,
