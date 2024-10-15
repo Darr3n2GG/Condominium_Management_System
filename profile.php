@@ -36,7 +36,6 @@ $stmt->close();
 		<nav class="navtop">
 			<div>
 				<h1>World Residence Centre</h1>
-                <a href="test.php"><i class="fas fa-user-circle"></i>About</a>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Rent Payment</a>
                 <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
