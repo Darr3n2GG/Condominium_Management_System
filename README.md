@@ -11,7 +11,7 @@ After downloading xampp and the zip file,
 3. go to http://localhost/phpmyadmin/index.php
 4. create a new xampp database named "exampledb"
 5. go to SQL (located at the top bar)
-6. Ctrl C + Ctrl V the code below and run SQL:
+6. Ctrl C + Ctrl V the code below and run SQL (click GO at the bottom right) :
 ```
 CREATE TABLE IF NOT EXISTS accounts (
     id int(11) NOT NULL AUTO_INCREMENT,
@@ -23,3 +23,4 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 INSERT INTO accounts (id, username, password, email) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com');
 ```
+7. make sure your web runs with prefix "https://localhost/" instead of "C://"

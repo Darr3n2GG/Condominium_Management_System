@@ -8,24 +8,39 @@ if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-if (!isset($_POST['username'], $_POST['password'], $_POST['email'], $_POST['house_number'])) {
-	exit('Please complete the registration form!');
+if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
+	echo "<script type='text/javascript'>
+		alert('Please complete the registration form!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
-if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['house_number'])) {
-	exit('Please complete the registration form');
+if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+	echo "<script type='text/javascript'>
+		alert('Please complete the registration form');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-	exit('Email is not valid!');
+	echo "<script type='text/javascript'>
+		alert('Email is not valid!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
-    exit('Username is not valid!');
+	echo "<script type='text/javascript'>
+		alert('Username is not valid! Username shall only consists of letters and numbers!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-	exit('Password must be between 5 and 20 characters long!');
+	echo "<script type='text/javascript'>
+		alert('Password must be between 5 and 20 characters long!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 function bind_parameters($stmt, $types, ...$params) {
