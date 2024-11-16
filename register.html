@@ -1,34 +1,123 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Register</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-        <link href="style.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<div class="register">
-			<h1>Register</h1>
-			<form action="register.php" method="post" autocomplete="off">
-				<label for="username">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<label for="email">
-					<i class="fas fa-envelope"></i>
-				</label>
-				<input type="email" name="email" placeholder="Email" id="email" required>
-				<label for="address">
-					<i class="fa-solid fa-address-book"></i>
-				</label>
-				<input type="text" name="house_number" placeholder="House Number" id="house_number" required>
-				<input type="submit" value="Register">
-                <a href="login.html">Back to login</a>
-			</form>
-		</div>
-	</body>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="style.css" rel="stylesheet" type="text/css">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-image: url('condo.webp');
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-size: 100% 123.1%;
+		}
+
+		.register-container {
+			background: #fff;
+			border-radius: 10px;
+			padding: 40px 30px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+			width: 100%;
+			max-width: 400px;
+		}
+
+		.register-container h2 {
+			margin-bottom: 20px;
+			color: #333;
+			text-align: center;
+		}
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		.form-group label {
+			display: block;
+			font-size: 14px;
+			margin-bottom: 5px;
+			color: #555;
+		}
+
+		.form-group input {
+			width: 100%;
+			padding: 10px;
+			font-size: 14px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			outline: none;
+		}
+
+		.form-group input:focus {
+			border-color: #2575fc;
+			box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+		}
+
+		.register-btn {
+			width: 100%;
+			background: #2575fc;
+			color: #fff;
+			padding: 10px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background 0.3s;
+		}
+
+		.register-btn:hover {
+			background: #6a11cb;
+		}
+
+		.already-account {
+			display: block;
+			margin-top: 15px;
+			text-align: center;
+			color: #2575fc;
+			text-decoration: none;
+			font-size: 14px;
+		}
+
+		.already-account:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="register-container">
+		<h2>Register</h2>
+		<form action="register.php" method="post" autocomplete="off">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" name ="username" id="username" placeholder="Username" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" name ="password" id="password" placeholder="Create a Password" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" name ="email" id="email" placeholder="Your Email" required>
+			</div>
+			<div class="form-group">
+				<label for="address">Address</label>
+				<input type="address" name ="address" id="address" placeholder="Address number" required>
+			</div>
+			<button type="submit" class="register-btn">Register</button>
+			<a href="login.html" class="already-account">Already have an account? Login</a>
+		</form>
+	</div>
+</body>
+
 </html>
