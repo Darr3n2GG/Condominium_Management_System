@@ -27,7 +27,7 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 }
 
 if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
-    exit('Username is not valid!');
+    exit('Username is not valid! Username shall only consists of letters and numbers!');
 }
 
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
@@ -51,7 +51,10 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
             $stmt->execute();
-            echo nl2br('You have successfully registered! You can now login! Enter http://localhost/System_Management_Web/login.html.');
+			echo "<script type='text/javascript'>
+				alert('Log in success! Redirecting to log in page...');
+				window.location.href = 'login.html';
+			</script>";
         } else {
             // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all three fields.
             echo 'Could not prepare statement!';
