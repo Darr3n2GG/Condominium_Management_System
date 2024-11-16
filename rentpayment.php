@@ -23,10 +23,10 @@
 				<p>Your payment history are below:</p>
 				<table class="table">
 					<tr>
-						<th>Date <th>Payment <th>Remarks
+						<th>Date</th> <th>Payment</th> <th>Remarks</th>
 					</tr>
                     <tr>
-                        <td>25 October 2024 <td>RM 10.00 <td> Electricity Fee
+                        <td>25 October 2024</td> <td>RM 10.00</td> <td> Electricity Fee</td>
                     </tr>
 				</table>
 			</div>
