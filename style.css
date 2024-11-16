@@ -102,6 +102,7 @@ body.loggedin {
 .content {
 	width: 1000px;
 	margin: 0 auto;
+    text-align: left;
 }
 .content h2 {
 	margin: 0;
@@ -119,10 +120,16 @@ body.loggedin {
 .content > p table td, .content > div table td {
 	padding: 5px;
 }
-.content > p table td:first-child, .content > div table td:first-child {
+.content > p .list td:first-child, .content > div .list td:first-child {
 	font-weight: bold;
 	color: #4a536e;
 	padding-right: 15px;
+}
+.content > div .table{
+    border-collapse: collapse;
+}
+.content > div .table th, .content > div .table td{
+    border: 1px, solid, black;
 }
 .content > div p {
 	padding: 5px;
