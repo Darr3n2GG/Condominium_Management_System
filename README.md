@@ -23,3 +23,4 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 INSERT INTO accounts (id, username, password, email) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com');
 ```
+7. make sure your web runs with prefix "https://localhost/" instead of "C://"
