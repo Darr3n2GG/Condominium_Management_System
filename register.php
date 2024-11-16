@@ -70,7 +70,11 @@ function insert_new_account() {
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $stmt->bind_param('ssss', $_POST['username'], $password, $_POST['email'], $_POST['house_number']);
         $stmt->execute();
-        echo nl2br('You have successfully registered! You can now login! Enter http://localhost/System_Management_Web/login.html.');
+        $stmt->close();
+        echo "<script type='text/javascript'>
+				alert('Log in success! Redirecting to log in page...');
+				window.location.href = 'login.html';
+			</script>";
     } else {
         error_in_prepare_statement();
     }
