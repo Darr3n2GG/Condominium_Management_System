@@ -15,11 +15,11 @@ if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 // We don't have the password or email info stored in sessions, so instead, we can get the results from the database.
-$stmt = $con->prepare('SELECT password, email FROM accounts WHERE id = ?');
+$stmt = $con->prepare('SELECT password, email, house_number FROM accounts WHERE id = ?');
 // In this case we can use the account ID to get the account info.
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($password, $email);
+$stmt->bind_result($password, $email, $house_number);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -52,13 +52,13 @@ $stmt->close();
 						<td>Username:</td>
 						<td><?=htmlspecialchars($_SESSION['name'], ENT_QUOTES)?></td>
 					</tr>
-					<!--Password line is removed, as it can't be decrypted/'unhashed' -->
 					<tr>
 						<td>Email:</td>
 						<td><?=htmlspecialchars($email, ENT_QUOTES)?></td>
 					</tr>
 					<tr>
 						<td>House Address:</td>
+                        <td><?=htmlspecialchars($house_number, ENT_QUOTES)?></td>
 					</tr>
 				</table>
 			</div>

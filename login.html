@@ -1,29 +1,115 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Login</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-        <link href="style.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<div class="login">
-			<h1>Login</h1>
-			<form action="authenticate.php" method="post">
-				<label for="username">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
-			</form>
-            <div class="link">
-                <a href="register.html">Register here</a><br>
-                <a href="home.php">Back to Home</a>
-            </div>
-		</div>
-	</body>
+
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Arial, sans-serif;
+		background: linear-gradient(135deg, #6a11cb, #2575fc);
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-image: url('condo.webp');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-size: 100% 123.1%;
+	}
+
+	.login-container {
+		background: #fff;
+		border-radius: 10px;
+		padding: 40px 30px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		width: 100%;
+		max-width: 400px;
+	}
+
+	.login-container h2 {
+		margin-bottom: 20px;
+		color: #333;
+		text-align: center;
+	}
+
+	.form-group {
+		margin-bottom: 15px;
+	}
+
+	.form-group label {
+		display: block;
+		font-size: 14px;
+		margin-bottom: 5px;
+		color: #555;
+	}
+
+	.form-group input {
+		width: 100%;
+		padding: 10px;
+		font-size: 14px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		outline: none;
+	}
+
+	.form-group input:focus {
+		border-color: #2575fc;
+		box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+	}
+
+	.login-btn {
+		width: 100%;
+		background: #2575fc;
+		color: #fff;
+		padding: 10px;
+		font-size: 16px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background 0.3s;
+	}
+
+	.login-btn:hover {
+		background: #6a11cb;
+	}
+
+	.forgot-password {
+		display: block;
+		margin-top: 15px;
+		text-align: center;
+		color: #2575fc;
+		text-decoration: none;
+		font-size: 14px;
+	}
+
+	.forgot-password:hover {
+		text-decoration: underline;
+	}
+</style>
+</head>
+
+<body>
+	<div class="login-container">
+		<h2>Login</h2>
+		<form action="authenticate.php" method="post">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="username" name="username" id="username" placeholder="Enter your username" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" placeholder="Enter your password" required>
+			</div>
+			<button type="submit" class="login-btn">Login</button>
+			<a href="register.html" class="forgot-password">Register here</a>
+		</form>
+	</div>
+</body>
+
 </html>
