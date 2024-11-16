@@ -14,24 +14,39 @@ if (mysqli_connect_errno()) {
 // Now we check if the data was submitted, isset() function will check if the data exists.
 if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
 	// Could not get the data that should have been sent.
-	exit('Please complete the registration form!');
+	echo "<script type='text/javascript'>
+		alert('Please complete the registration form!');
+		window.location.href = 'register.html';
+	</script>";
 }
 // Make sure the submitted registration values are not empty.
 if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
 	// One or more values are empty.
-	exit('Please complete the registration form');
+	echo "<script type='text/javascript'>
+		alert('Please complete the registration form');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-	exit('Email is not valid!');
+	echo "<script type='text/javascript'>
+		alert('Email is not valid!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
-    exit('Username is not valid! Username shall only consists of letters and numbers!');
+	echo "<script type='text/javascript'>
+		alert('Username is not valid! Username shall only consists of letters and numbers!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-	exit('Password must be between 5 and 20 characters long!');
+	echo "<script type='text/javascript'>
+		alert('Password must be between 5 and 20 characters long!');
+		window.location.href = 'register.html';
+	</script>";
 }
 
 // We need to check if the account with that username exists.
