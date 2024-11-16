@@ -1,7 +1,5 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
-// If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: login.html');
 	exit;
@@ -14,9 +12,7 @@ $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-// We don't have the password or email info stored in sessions, so instead, we can get the results from the database.
 $stmt = $con->prepare('SELECT password, email, house_number FROM accounts WHERE id = ?');
-// In this case we can use the account ID to get the account info.
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
 $stmt->bind_result($password, $email, $house_number);
@@ -36,6 +32,8 @@ $stmt->close();
 		<nav class="navtop">
 			<div>
 				<h1>World Residence Centre</h1>
+                <!-- <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a> -->
+                <a href="rentpayment.php"><i class="fa-solid fa-credit-card"></i></i>Rent Payment</a>
                 <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
                 <a href="payment.php"><i class="fas fa-user-circle"></i>Payment</a>

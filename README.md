@@ -18,9 +18,10 @@ CREATE TABLE IF NOT EXISTS accounts (
     username varchar(50) NOT NULL,
     password varchar(255) NOT NULL,
     email varchar(100) NOT NULL,
+    house_number int(255) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO accounts (id, username, password, email) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com');
+INSERT INTO accounts (id, username, password, email, house_number) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com', 1);
 ```
-7. make sure your web runs with prefix "https://localhost/" instead of "C://"
+7. make sure your webpage runs with the prefix "https://localhost/" instead of "C://"
