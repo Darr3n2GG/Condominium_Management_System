@@ -10,9 +10,9 @@
 		<nav class="navtop">
 			<div>
 				<h1>World Residence Centre</h1>
-                <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
                 <a href="payment.php"><i class="fas fa-user-circle"></i>Payment</a>
+                <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
@@ -34,7 +34,7 @@
         <button class="payButton">Pay here</button>
         <div class="payment">
             <h1 class="payTitle">Personal Information</h1>
-            <form>
+            <form action>
                 <label>Name and Surname</label>
                 <input type="text" name="name" placeholder="John Doe" class="payInput">
                 <br>
@@ -56,7 +56,6 @@
                 <span class="close">X</span>
             </form>
         </div>
-        <script src="payment.js">
-        </script>
+        <script src="payment.js"></script>
 	</body>
 </html>
