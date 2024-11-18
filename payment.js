@@ -11,6 +11,6 @@ close.addEventListener("click", () => {
 payment.style.display = "none";
 });
 
-submit.addEventListener("click", () => { 
+submit.addEventListener("click", () => { //Should check whether the information is filled in, best if they are valid
     payment.style.display = "none";
 });
