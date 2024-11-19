@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    $test = "Login";
+    $userState = "Login";
 } else {
-    $test = "Profile";
+    $userState = "Profile";
 }
 ?>
 
@@ -21,7 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
 				<h1>World Residence Centre</h1>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
                 <a href="payment.html"><i class="fas fa-cash-register"></i>Payment</a>
-				<a href="profile.html"><i class="fas fa-user-circle"></i><?= $test; ?></a>
+				<a href="profile.html"><i class="fas fa-user-circle"></i><?= $userState; ?></a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
