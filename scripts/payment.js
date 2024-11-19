@@ -4,11 +4,11 @@ const close = document.querySelector(".close");
 const submit = document.querySelector(".confirmPayButton");
 
 payButton.addEventListener("click", () => {
-payment.style.display = "flex";
+    payment.style.display = "flex";
 });
 
 close.addEventListener("click", () => {
-payment.style.display = "none";
+    payment.style.display = "none";
 });
 
 submit.addEventListener("click", () => { //Should check whether the information is filled in, best if they are valid
