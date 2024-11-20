@@ -36,7 +36,7 @@ if (!isset($_SESSION['loggedin'])) {
 						<th>Date <th>Payment <th>Remarks
 					</tr>
                     <tr>
-                        <td>25 October 2024 <td>RM 10.00 <td> Electricity Fee
+                        <td>25 October 2024 <td>RM 10.00 <td>Maintenance Fee
                     </tr>
 				</table>
 			</div>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="payment">
             <h1 class="payTitle">Personal Information</h1>
             <form action>
-                <label>Name and Surname</label>
+                <label>Full Name</label>
                 <input type="text" name="name" placeholder="John Doe" class="payInput">
                 <br>
                 <label>Phone Number</label>

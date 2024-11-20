@@ -18,6 +18,12 @@ $stmt->execute();
 $stmt->bind_result($password, $email, $house_number);
 $stmt->fetch();
 $stmt->close();
+
+if (!isset($_SESSION['loggedin'])) {
+    $test = "Login";
+} else {
+    $test = "Profile";
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +41,7 @@ $stmt->close();
                 <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
                 <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
+				<a href="profile.php"><i class="fas fa-user-circle"></i><?= $test; ?></a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
