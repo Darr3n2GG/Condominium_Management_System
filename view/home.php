@@ -1,12 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["loggedin"])) {
-    $loggedIn = true;
-    $userState = "Profile";
-} else {
-    $loggedIn = false;
-    $userState = "Login";
-}
+$loggedIn = isset($_SESSION["loggedin"]);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +16,8 @@ if (isset($_SESSION["loggedin"])) {
 			<div>
 				<h1>World Residence Centre</h1>
                 <a href="payment.php" id="paymentButton"><i class="fas fa-cash-register"></i>Payment</a>
-				<a href="profile.php"><i class="fas fa-user-circle"></i><?=htmlspecialchars($userState, ENT_QUOTES)?></a>
+				<a href="profile.php" id="profileButton"><i class="fas fa-user-circle"></i>Profile</a>
+                <a href="login.html" id="logInButton"><i class="fas fa-user-circle"></i>Login</a>
 				<a href="../controller/logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
@@ -46,8 +41,8 @@ if (isset($_SESSION["loggedin"])) {
             The lifestyle in the World Residence Center is tailored to professionals, families, and individuals seeking both comfort and prestige. Its high-end features, combined with the vibrant community atmosphere, make it a sought-after residence for those who value quality living.</p>
             <h2>What are you waiting for? Make the World Residence Center your first and only home!</h2>
         </div>
-        <script type = "text/javascript">
-            const loggedIn = <?php echo $loggedIn;?>;
+        <script type="text/javascript">
+            var loggedIn = <?php echo json_encode($loggedIn); ?>;
         </script>
         <script type="text/javascript" src="../scripts/checkLoggedIn.js"></script>
 	</body>
