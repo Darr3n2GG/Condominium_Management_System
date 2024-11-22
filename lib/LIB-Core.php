@@ -5,15 +5,15 @@ class Core {
     public $stmt = null;
     public $loaded = [];
 
-    public function __construct() {
-        $this->con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+    function __construct() {
+        $this->con = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
 
         if (mysqli_connect_errno()) {
             exit("Failed to connect to MySQL: " . mysqli_connect_error());
         }
     }
 
-    public function __destruct() {
+    function __destruct() {
         if ($this->stmt) {
             $this->stmt->close();
         }
@@ -22,22 +22,22 @@ class Core {
         }
     }
 
-    public function exec($sql, $data=null) : void {
-        $this->stmt = $this->conn->prepare($sql);
+    function exec($sql, $data=null) : void {
+        $this->stmt = $this->con->prepare($sql);
         $this->stmt->execute($data);
     }
 
-    public function fetch($sql, $data=null) {
+    function fetch($sql, $data=null) {
         $this->exec($sql, $data);
         return $this->stmt->fetch();
     }
 
-    public function fetchAll($sql, $data=null) {
+    function fetchAll($sql, $data=null) {
         $this->exec($sql, $data);
         return $this->stmt->fetchAll();
     }
 
-    public function fetchAndArrangeByString($sql, $data=null, string $arrange=null) {
+    function fetchAllAndArrangeByString($sql, $data=null, string $arrange=null) {
         $data = [];
 
         while ($r = $this->stmt->fetch()) {
@@ -47,7 +47,7 @@ class Core {
         return $data;
     }
 
-    public function fetchAndArrangeByArray($sql, $data=null, array $arrange=null) {
+    function fetchAllAndArrangeByArray($sql, $data=null, array $arrange=null) {
         $data = [];
 
         while ($r = $this->stmt->fetch()) {
@@ -57,12 +57,12 @@ class Core {
         return $data;
     }
 
-    public function load($module) : void {
+    function load($module) : void {
         if (isset($this->loaded[$module])) {
             return;
         }
 
-        $file = PATH_LIB . "LIB-$module.php";
+        $file = PATH_LIB . "$module.php";
         if (file_exists($file)) {
             require $file;
             $this->loaded[$module] = new $module($this);
@@ -71,7 +71,7 @@ class Core {
         }
     }
 
-    public function __get($name) {
+    function __get($name) {
         if (isset($this->loaded[$name])) {
             return $this->loaded[$name];
         }
@@ -82,12 +82,12 @@ class Ext {
     public $Core;
     public $error;
 
-    public function __construct($core) {
+    function __construct($core) {
         $this->Core =& $core;
         $this->error =& $core->error;
     }
     
-    public function __get($name) {
+    function __get($name) {
         if (isset($this->Core->loaded[$name])) {
             return $this->Core->loaded[$name]; 
         }

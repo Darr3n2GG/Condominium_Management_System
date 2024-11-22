@@ -34,7 +34,7 @@ $stmt->close();
 				<h1>World Residence Centre</h1>
                 <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
                 <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
-				<a href="../controller/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				<a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
 		<div class="content">

@@ -2,13 +2,14 @@
 error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 
-$DATABASE_HOST = "localhost";
-$DATABASE_USER = "root";
-$DATABASE_PASS = "";
-$DATABASE_NAME = "exampledb";
+define("DATABASE_HOST", "localhost");
+define("DATABASE_USER", "root");
+define("DATABASE_PASS", "");
+define("DATABASE_NAME", "exampledb");
 
-$PATH_LIB = __DIR__ . DIRECTORY_SEPARATOR;
-$PATH_BASE = dirname(PATH_LIB) . DIRECTORY_SEPARATOR;
+// (C) AUTO FILE PATHS
+define("PATH_LIB", __DIR__ . DIRECTORY_SEPARATOR);
+define("PATH_BASE", dirname(PATH_LIB) . DIRECTORY_SEPARATOR);
 
 session_start();
 

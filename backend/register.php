@@ -71,7 +71,7 @@ function insert_new_account() {
         $stmt = execute_and_store($stmt, "ssss", $_POST["username"], $password, $_POST["email"], $_POST["house_number"]);
         echo '<script type="text/javascript">
 				alert("Log in success! Redirecting to log in page...");
-				window.location.href = "login.html";
+				window.location.href = "../frontend/login.html";
 			</script>';
     } else {
         error_in_prepare_statement();

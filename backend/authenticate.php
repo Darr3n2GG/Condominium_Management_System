@@ -30,7 +30,7 @@ if ($stmt = $con->prepare("SELECT id, password FROM accounts WHERE username = ?"
             $_SESSION["loggedin"] = TRUE;
             $_SESSION["name"] = $_POST["username"];
             $_SESSION["id"] = $id;
-            header("Location: ../view/home.php");
+            header("Location: ../frontend/home.php");
         } else {
             echo "Incorrect username and/or password!";
         }

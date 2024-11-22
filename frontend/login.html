@@ -10,7 +10,7 @@
 <body>
 	<div class="login-container">
 		<h2>Login</h2>
-		<form action="../controller/login.php" method="post">
+		<form action="../backend/authenticate.php" method="post">
 			<div class="form-group">
 				<label for="username">Username</label>
 				<input type="username" name="username" id="username" placeholder="Enter your username" required>
@@ -20,7 +20,7 @@
 				<input type="password" name="password" id="password" placeholder="Enter your password" required>
 			</div>
 			<button type="submit" class="login-btn">Login</button>
-			<a href="../view/register.html" class="forgot-password">Register here</a>
+			<a href="../frontend/register.html" class="forgot-password">Register here</a>
 		</form>
 	</div>
 </body>
