@@ -11,7 +11,7 @@ if (!isset($_SESSION['loggedin'])) {
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>World Residence Centre</title>
+		<title>Island Crest</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
         <link href="payment.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -19,8 +19,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<body class="loggedin">
 		<nav class="navtop">
 			<div>
-				<h1>World Residence Centre</h1>
-                <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
+                <a href="home.php" id="left">Island Crest</a>
                 <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
                 <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i><?= $test; ?></a>

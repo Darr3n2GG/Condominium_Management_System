@@ -4,6 +4,7 @@
     font-size: 16px;
 }
 .navtop {
+	position: fixed;
 	background-color: #3b2f47;
 	height: 60px;
 	width: 100%;
@@ -19,15 +20,16 @@
 	display: inline-flex;
 	align-items: center;
 }
-.navtop div h1 {
+.navtop div h1, .navtop div a#left {
 	flex: 1;
 	font-size: 24px;
 	padding: 0;
 	margin: 0;
 	color: #eaebed;
 	font-weight: normal;
+	text-decoration-line: none;
 }
-.navtop div a {
+.navtop div a:not(#left){
 	padding: 0 20px;
 	text-decoration: none;
 	color: #c1c4c8;
@@ -42,9 +44,11 @@
 body.loggedin {
 	background-color: #f3f4f7;
 }
+
 .content {
+	padding-top: 60px;
 	width: 1000px;
-	margin: 0 auto;
+	margin: 0px auto;
     text-align: left;
 }
 .content h2 {
