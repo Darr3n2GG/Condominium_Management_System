@@ -3,6 +3,7 @@
 
 # Dependencies
 1. Xampp
+2. Composer (phpunit)
 
 # Instructions
 After downloading xampp and the zip file,

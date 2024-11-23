@@ -20,7 +20,7 @@ function executeAndStore($stmt, $types, ...$params) {
     return $stmt;
 }
 
-require_once('lib/userLogin.php');
+require_once("../lib/userLogin.php");
 $userLogin = new userLogin;
 
 if ($stmt = $con->prepare("SELECT id, password FROM accounts WHERE username = ?")) {
