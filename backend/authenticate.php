@@ -20,6 +20,9 @@ function executeAndStore($stmt, $types, ...$params) {
     return $stmt;
 }
 
+require_once('lib/userLogin.php');
+$userLogin = new userLogin;
+
 if ($stmt = $con->prepare("SELECT id, password FROM accounts WHERE username = ?")) {
 	$stmt = executeAndStore($stmt, "s", $_POST["username"]);
     if ($stmt->num_rows > 0) {

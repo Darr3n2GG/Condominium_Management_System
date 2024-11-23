@@ -1,7 +1,12 @@
 <?php
 class userLogin extends Core {
-    function get($username) {
-        return $this->fetch("SELECT id, password FROM accounts WHERE username = ?", [$username]);
+    function login($username, $password) {
+        $this->get($username);
+    }
+    function get($username) : array{
+        $results = $this->get_result("SELECT id, password FROM accounts WHERE username = ?",[$username]);
+        $row = $results->fetch_assoc();
+        return $row;
     }
 }
 ?>

@@ -1,14 +1,10 @@
 <?php
 class Core {
-    private $DATABASE_HOST = "localhost";
-    private $DATABASE_USER = "root";
-    private $DATABASE_PASS = "";
-    private $DATABASE_NAME = "exampledb";
     public $conn = null;
     public $stmt = null;
 
     function __construct() {
-        $this->conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+        $this->conn = mysqli_connect($DATABASE_HOST = "localhost", $DATABASE_USER = "root", $DATABASE_PASS = "", $DATABASE_NAME = "exampledb");
 
         if (mysqli_connect_errno()) {
             exit("Failed to connect to MySQL: " . mysqli_connect_error());
@@ -16,43 +12,23 @@ class Core {
     }
 
     function __destruct() {
-        if ($this->conn) { $this->conn->close(); }
-        if($this->stmt) { $this->stmt->close(); }
+        $this->conn->close();
     }
 
-    function exec($sql, $data=null) : void {
-        $this->stmt = $this->con->prepare($sql);
-        $this->stmt->execute($data);
+    function exec($query, $params=[]) : void{
+        $this->stmt = $this->conn->prepare($query);
+        $this->stmt->execute($params);
     }
 
-    function fetch($sql, $data=null) {
+    function get_result($sql, $data=null) {
         $this->exec($sql, $data);
-        return $this->stmt->fetch();
+        return $this->stmt->get_result();
     }
 
     function fetchAll($sql, $data=null) {
         $this->exec($sql, $data);
         return $this->stmt->fetchAll();
     }
-
-    function fetchAllAndArrangeByString($sql, $data=null, string $arrange=null) {
-        $data = [];
-
-        while ($r = $this->stmt->fetch()) {
-            $data[$r[$arrange]] = $row;
-        }
-
-        return $data;
-    }
-
-    function fetchAllAndArrangeByArray($sql, $data=null, array $arrange=null) {
-        $data = [];
-
-        while ($r = $this->stmt->fetch()) {
-            $data[$r[$arrange[0]]] = $r[$arrange[1]];
-        }
-
-        return $data;
-    }
+    
 }
 ?>

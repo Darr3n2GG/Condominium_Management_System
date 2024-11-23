@@ -3,25 +3,26 @@ use PHPUnit\Framework\TestCase;
 
 
 class UserLoginTest extends TestCase {
-    function testGet() {
+    function testGetId() {
         $userLogin = new userLogin;
 
-        $expectedResult = [
-            "id" => 1,
-            "password" => "test"
-        ];
+        $expectedResult = 1;
 
-        $result = $userLogin->get("test");
+        $row = $userLogin->get("test");
+        $result = $row["id"];
 
-        $this->assertSame($expectedResult, $result);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    // function testGetWithInvalidUsername() {
-    //     // Act
-    //     $result = $_CORE->userLogin->get("1");
+    function testGetPassword() {
+        $userLogin = new userLogin;
 
-    //     // Assert
-    //     $this->assertNull($result);
-    // }
+        $expectedResult = "test";
+
+        $row = $userLogin->get("test");
+        $result = $row["password"];
+
+        $this->assertTrue(password_verify($expectedResult, $result));
+    }
 }
 ?>
