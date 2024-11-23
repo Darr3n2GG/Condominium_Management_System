@@ -38,7 +38,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<nav class="navtop">
 			<div>
                 <a href="home.php" id="left">Island Crest</a>
-                <a href="test.php"><i class="fas fa-user-circle"></i>Issues</a>
+                <a href="issue.php"><i class="fa-solid fa-comment"></i>Issues</a>
                 <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i><?= $test; ?></a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['loggedin'])) {
 			<h2>Profile Page</h2>
 			<div>
 				<p>Your account details are below:</p>
-				<table>
+				<table class="list">
 					<tr>
 						<td>Username:</td>
 						<td><?=htmlspecialchars($_SESSION['name'], ENT_QUOTES)?></td>
