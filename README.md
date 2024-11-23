@@ -25,4 +25,4 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 INSERT INTO accounts (id, username, password, email, house_number) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com', 1);
 ```
-7. make sure your webpage runs with the prefix "https://localhost/" instead of "C://"
+7. make sure your webpage runs with the prefix "https://127.0.0.1/" instead of "C://"
