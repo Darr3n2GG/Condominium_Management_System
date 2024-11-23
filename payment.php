@@ -50,8 +50,9 @@ if (!isset($_SESSION['loggedin'])) {
                 <label>Phone Number</label>
                 <input type="number" name="phone" placeholder="+6012 345 6781" class="payInput" maxlength="13">
                 <br>
-                <label>Remarks</label>
-                <input type="text" name="name" placeholder="Remarks" class="payInput">
+                <h1 class="payTitle">Payment Details</h1>
+                <input type="number" name="amount" placeholder="RM" class="payInput sm">
+                <input type="text" name="remarks" placeholder="Remarks" class="payInput">
                 <br>
                 <h1 class="payTitle">Card Information</h1>
                 <div class="cardIcons"> <!--Card icon missing !!!-->
