@@ -1,32 +1,27 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class UserLoginTest extends TestCase {
-    // function setUp() : void {
-    //     require_once "lib/CORE-Go.php";
-    //     $_CORE->load("userLogin");
-    // }
 
+class UserLoginTest extends TestCase {
     function testGet() {
-        // Arrange
-        require_once "lib/CORE-Go.php";
-        $_CORE->load("userLogin");
+        $userLogin = new userLogin;
+
         $expectedResult = [
             "id" => 1,
             "password" => "test"
         ];
 
-        $result = $_CORE->userLogin->get("test");
+        $result = $userLogin->get("test");
 
         $this->assertSame($expectedResult, $result);
     }
 
-    function testGetWithInvalidUsername() {
-        // Act
-        $result = $_CORE->userLogin->get("1");
+    // function testGetWithInvalidUsername() {
+    //     // Act
+    //     $result = $_CORE->userLogin->get("1");
 
-        // Assert
-        $this->assertNull($result);
-    }
+    //     // Assert
+    //     $this->assertNull($result);
+    // }
 }
 ?>

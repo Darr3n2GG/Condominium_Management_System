@@ -1,7 +1,7 @@
 <?php
-class userLogin extends Ext {
+class userLogin extends Core {
     function get($username) {
-        return $this->Core->fetch("SELECT id, password FROM accounts WHERE username = ?", [$username]);
+        return $this->fetch("SELECT id, password FROM accounts WHERE username = ?", [$username]);
     }
 }
 ?>
