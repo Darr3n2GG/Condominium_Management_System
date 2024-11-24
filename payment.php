@@ -20,7 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<nav class="navtop">
 			<div>
                 <a href="home.php" id="left">Island Crest</a>
-                <a href="issue.php"><i class="fa-solid fa-comment"></i>Issues</a>
+                <a href="feedback.php"><i class="fa-solid fa-comment"></i>Feedback</a>
                 <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i><?= $test; ?></a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -65,7 +65,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" maxlength="4">
                     <input type="number" name="cvv" placeholder="cvv" class="payInput sm">
                 </div>
-                <button type="submit" class="confirmPayButton">Confirm Payment</button>
+                <button type="submit" class="confirmPayButton">Confirm Payment</button> <!--Type as submit make it impossible to close before actions-->
                 <span class="close">X</span>
             </form>
         </div>
