@@ -1,1 +1,1 @@
-{"version":1,"defects":{"UserLoginTest::testGet":7,"UserLoginTest::testGetPassword":8,"UserLoginTest::testGetId":8},"times":{"UserLoginTest::testGet":0.046,"UserLoginTest::testGetId":0.262,"UserLoginTest::testGetPassword":0.137}}
+{"version":1,"defects":{"UserLoginTest::testGetId":8,"UserLoginTest::testGetPassword":8},"times":{"UserLoginTest::testGetId":0.015,"UserLoginTest::testGetPassword":0.141}}

@@ -1,38 +1,59 @@
 <?php
 class Core {
-    public $conn = null;
-    public $stmt = null;
+    private $conn = null;
+    private $stmt = null;
 
-    function __construct() {
-        $this->conn = mysqli_connect($DATABASE_HOST = "localhost", $DATABASE_USER = "root", $DATABASE_PASS = "", $DATABASE_NAME = "exampledb");
+    public function __construct($DATABASE_HOST = "localhost", $DATABASE_USER = "root", $DATABASE_PASSWORD = "", $DATABASE_NAME = "exampledb") {
+        try {
+            $this->conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASSWORD, $DATABASE_NAME);
 
-        if (mysqli_connect_errno()) {
-            exit("Failed to connect to MySQL: " . mysqli_connect_error());
+            if (mysqli_connect_errno()) {
+                throw New Exception("Failed to connect to MySQL: " . mysqli_connect_error());
+            }
+        }
+
+        catch (Exception $e) {
+            exit($e->getMessage());
         }
     }
 
-    function __destruct() {
-        $this->conn->close();
+    public function __destruct() {
+        if ($this->conn) { $this->conn->close(); }
     }
 
-    function exec($query, $params=[]) : void{
-        $this->stmt = $this->conn->prepare($query);
-        $this->stmt->execute($params);
+    private function execute_statement($query, $params=null) : void {
+        try {
+            $this->stmt = $this->conn->prepare($query);
+            if($this->stmt === false) {
+                throw New Exception("Unable to do prepared statement: " . $query);
+            }
+            $this->stmt->execute($params);
+        }
+        
+        catch (Exception $e) {
+            echo "Message :" . $e->getMessage();
+        }
     }
 
-    function getResult($sql, $data=null) {
-        $this->exec($sql, $data);
-        return $this->stmt->get_result();
+    public function get_result($query, $params=null) {
+        try {
+            $this->execute_statement($query, $params);
+            $results = $this->stmt->get_result();
+            if (!$results) {
+                throw New Exception("No results");
+            }
+
+            return $results;
+        } 
+        
+        catch (Exception $e) {
+            echo "Message :" . $e->getMessage();
+        }
     }
 
-    function fetchRow($results) {
-        return $results->fetch_assoc();
-    }
-
-    function fetchAll($sql, $data=null) {
-        $this->exec($sql, $data);
+    function fetchAll($query, $params=null) {
+        $this->execute_statement($query, $params);
         return $this->stmt->fetchAll();
     }
-    
 }
 ?>

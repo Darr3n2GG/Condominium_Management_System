@@ -20,27 +20,8 @@ function executeAndStore($stmt, $types, ...$params) {
     return $stmt;
 }
 
-require_once("../lib/userLogin.php");
-$userLogin = new userLogin;
+require_once("../lib/UserLogin.php");
+$UserLogin = new UserLogin($_POST["username"], $_POST["password"]);
+$UserLogin->login();
 
-if ($stmt = $con->prepare("SELECT id, password FROM accounts WHERE username = ?")) {
-	$stmt = executeAndStore($stmt, "s", $_POST["username"]);
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $password);
-        $stmt->fetch();
-        if (password_verify($_POST["password"], $password)) {
-            session_regenerate_id();
-            $_SESSION["loggedin"] = TRUE;
-            $_SESSION["name"] = $_POST["username"];
-            $_SESSION["id"] = $id;
-            header("Location: ../frontend/home.php");
-        } else {
-            echo "Incorrect username and/or password!";
-        }
-    } else {
-        echo "Incorrect username and/or password!";
-    }
-
-	$stmt->close();
-}
 ?>

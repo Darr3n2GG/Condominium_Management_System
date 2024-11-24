@@ -4,23 +4,21 @@ use PHPUnit\Framework\TestCase;
 
 class UserLoginTest extends TestCase {
     function testGetId() {
-        $userLogin = new userLogin;
+        $UserLogin = new UserLogin;
 
         $expectedResult = 1;
 
-        $row = $userLogin->getIdAndPasswordFrom("test");
-        $result = $row["id"];
+        $result = $UserLogin->get_id_from("test");
 
         $this->assertEquals($expectedResult, $result);
     }
 
     function testGetPassword() {
-        $userLogin = new userLogin;
+        $UserLogin = new UserLogin;
 
         $expectedResult = "test";
 
-        $row = $userLogin->getIdAndPasswordFrom("test");
-        $result = $row["password"];
+        $result = $UserLogin->get_password_from("test");
 
         $this->assertTrue(password_verify($expectedResult, $result));
     }
