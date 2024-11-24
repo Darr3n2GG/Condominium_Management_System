@@ -8,7 +8,7 @@ class UserLoginTest extends TestCase {
 
         $expectedResult = 1;
 
-        $row = $userLogin->get("test");
+        $row = $userLogin->getIdAndPasswordFrom("test");
         $result = $row["id"];
 
         $this->assertEquals($expectedResult, $result);
@@ -19,7 +19,7 @@ class UserLoginTest extends TestCase {
 
         $expectedResult = "test";
 
-        $row = $userLogin->get("test");
+        $row = $userLogin->getIdAndPasswordFrom("test");
         $result = $row["password"];
 
         $this->assertTrue(password_verify($expectedResult, $result));

@@ -18,7 +18,6 @@ if (!isset($_SESSION["loggedin"])) {
 		<nav class="navtop">
 			<div>
 				<h1>World Residence Centre</h1>
-                <a href="payment.php"><i class="fas fa-user-circle"></i>Payment</a>
                 <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
 				<a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>

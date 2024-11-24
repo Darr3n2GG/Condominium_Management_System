@@ -20,9 +20,13 @@ class Core {
         $this->stmt->execute($params);
     }
 
-    function get_result($sql, $data=null) {
+    function getResult($sql, $data=null) {
         $this->exec($sql, $data);
         return $this->stmt->get_result();
+    }
+
+    function fetchRow($results) {
+        return $results->fetch_assoc();
     }
 
     function fetchAll($sql, $data=null) {
