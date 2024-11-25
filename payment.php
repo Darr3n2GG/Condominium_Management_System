@@ -20,7 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<nav class="navtop">
 			<div>
                 <a href="home.php" id="left">Island Crest</a>
-                <a href="feedback.php"><i class="fa-solid fa-comment"></i>Feedback</a>
+                <a href="feedback.html"><i class="fa-solid fa-comment"></i>Feedback</a>
                 <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i><?= $test; ?></a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -43,7 +43,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button class="payButton">Pay here</button>
         <div class="payment">
             <h1 class="payTitle">Personal Information</h1>
-            <form action>
+            <form method="post">
                 <label>Full Name</label>
                 <input type="text" name="name" placeholder="John Doe" class="payInput">
                 <br>
