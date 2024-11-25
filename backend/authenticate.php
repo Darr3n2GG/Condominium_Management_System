@@ -6,30 +6,27 @@ $core = New Core;
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-function check_username_exists() {
+function check_username_exists() : bool {
     global $core;
     global $username;
-    $result = $core->get_result("SELECT * FROM accounts WHERE username = ?", [$username]);
-    if ($result->num_rows <= 0) {
-        throw new Exception("Username does not exist");
+    if (!$result = $core->select("SELECT * FROM accounts WHERE username = ?", [$username])) {
+        throw new Exception("Invalid username or password.");
     }
     return true;
 }
 
-function get_password_from() : string {
+function get_password() : string {
     global $core;
     global $username;
-    $result = $core->get_result("SELECT password FROM accounts WHERE username = ?", [$username]);
-    $row = $result->fetch_assoc();
-    return $row['password'];
+    $result = $core->select("SELECT password FROM accounts WHERE username = ?", [$username]);
+    return $result[0]["password"];
 }
 
-function get_id_from() : string {
+function get_id() : string {
     global $core;
     global $username;
-    $result = $core->get_result("SELECT id FROM accounts WHERE username = ?", [$username]);
-    $row = $result->fetch_assoc();
-    return $row['id'];
+    $result = $core->select("SELECT id FROM accounts WHERE username = ?", [$username]);
+    return $result[0]["id"];
 }
 
 try {
@@ -38,9 +35,9 @@ try {
     }
 
     check_username_exists();
-    $hashed_password = get_password_from();
+    $hashed_password = get_password();
     if (password_verify($password, $hashed_password)) {
-        $id = get_id_from();
+        $id = get_id();
         session_regenerate_id();
         $_SESSION["loggedin"] = TRUE;
         $_SESSION["name"] = $username;
@@ -52,6 +49,6 @@ try {
 }
 
 catch (Exception $e) {
-    echo "Message :" . $e->getMessage();
+    echo "Message : " . $e->getMessage();
 }
 ?>

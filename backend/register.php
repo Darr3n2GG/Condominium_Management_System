@@ -50,46 +50,38 @@ $username = $_POST["username"];
 
 function check_account_exists() {
     if (check_username_exists()) {
-        echo "Username exists, please choose another!";
-        return false;
-    } else {
-        return true;
+        throw New Exception("Username exists, please choose another!");
     }
+    return true;
 }
+
 function check_username_exists() {
     global $core;
     global $username;
-    $result = $core->get_result("SELECT id FROM accounts WHERE username = ?", [$username]);
-    return $result->num_rows > 0;
+    $result = $core->select("SELECT id FROM accounts WHERE username = ?", [$username]);
+    return !$result;
 }
+
 function insert_new_account() {
-    $con = $GLOBALS["con"];
-    if ($stmt = $con->prepare("INSERT INTO accounts (username, password, email, house_number) VALUES (?, ?, ?, ?)")) {
-        // We do not want to expose passwords in our database
-        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        $stmt = execute_and_store($stmt, "ssss", $_POST["username"], $password, $_POST["email"], $_POST["house_number"]);
-        echo '<script type="text/javascript">
-				alert("Log in success! Redirecting to log in page...");
-				window.location.href = "../frontend/login.html";
-			</script>';
-    } else {
-        error_in_prepare_statement();
+    global $core;
+    global $username;
+    $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = $_POST["email"];
+    $stmt = $core->insert("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [$username, $password, $email]);
+    echo '<script type="text/javascript">
+            alert("Log in success! Redirecting to log in page...");
+            window.location.href = "../frontend/login.html";
+        </script>';
+
+}
+
+try {
+    if (check_account_exists()) {
+        insert_new_account();
     }
 }
-function error_in_prepare_statement() {
-    // Something is wrong with the SQL statement, check to make sure your accounts table exists with all three fields.
-    echo "Could not prepare statement!";
-}
-function execute_and_store($stmt, $types, ...$params) {
-    $stmt->bind_param($types, ...$params);
-    $stmt->execute();
-    $stmt->store_result();
-    return $stmt;
-}
 
-if (check_account_exists()) {
-    insert_new_account();
+catch (Exception $e) {
+    echo "Message : " . $e->getMessage();
 }
-
-$con->close();
 ?>
