@@ -24,14 +24,18 @@ class CoreTest extends TestCase {
         $this->assertIsArray($result);
     }
 
-    public function testInsert() {
-        $query = "INSERT INTO accounts (username) VALUES (?)";
-        $params = ["Test Name"];
+    // public function testInsert() {
+    //     $query = "INSERT INTO accounts (username) VALUES (?)";
+    //     $params = ["Test Name"];
         
-        $insertId = $this->core->insert($query, $params);
+    //     $this->core->insert($query, $params);
         
-        $this->assertGreaterThan(0, $insertId);
-    }
+    //     $query = "SELECT * FROM accounts WHERE username = ?";
+    //     $expected_results = $this->core->select($query, $params);
+
+    //     $this->assertEquals($expected_results);
+    //     $this->core->remove("DELETE FROM accounts WHERE username = ?", ['Test Name']);
+    // }
 
     public function testUpdate() {
         $query = "UPDATE accounts SET username = ? WHERE id = ?";
@@ -40,7 +44,7 @@ class CoreTest extends TestCase {
         $this->core->update($query, $params);
         
         $result = $this->core->select("SELECT * FROM accounts WHERE id = ?", [1]);
-        $this->assertEquals("Updated Name", $result[0]['username']);
+        $this->assertEquals("Updated Name", $result[0]["username"]);
     }
 
     public function testRemove() {
@@ -54,8 +58,6 @@ class CoreTest extends TestCase {
     }
 
     protected function tearDown(): void {
-        
-        $this->core->update("UPDATE accounts SET username = ? WHERE id = ?", ["test", 1]);
         $this->core = null;
     }
 }

@@ -46,7 +46,16 @@ if (strlen($_POST["password"]) > 20 || strlen($_POST["password"]) < 5) {
 }
 
 $core = New Core;
-$username = $_POST["username"];
+
+try {
+    if (check_account_exists()) {
+        insert_new_account();
+    }
+}
+
+catch (Exception $e) {
+    echo "Message : " . $e->getMessage();
+}
 
 function check_account_exists() {
     if (check_username_exists()) {
@@ -57,31 +66,20 @@ function check_account_exists() {
 
 function check_username_exists() {
     global $core;
-    global $username;
+    $username = $_POST["username"];
     $result = $core->select("SELECT id FROM accounts WHERE username = ?", [$username]);
-    return !$result;
+    return $result;
 }
 
 function insert_new_account() {
     global $core;
-    global $username;
+    $username = $_POST["username"];
     $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $email = $_POST["email"];
-    $stmt = $core->insert("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [$username, $password, $email]);
+    $stmt = $core->insert("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [$username, $hashed_password, $email]);
     echo '<script type="text/javascript">
             alert("Log in success! Redirecting to log in page...");
             window.location.href = "../frontend/login.html";
         </script>';
-
-}
-
-try {
-    if (check_account_exists()) {
-        insert_new_account();
-    }
-}
-
-catch (Exception $e) {
-    echo "Message : " . $e->getMessage();
 }
 ?>
