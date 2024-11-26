@@ -39,27 +39,17 @@ if (!isset($_SESSION["loggedin"])) {
 		</div>
         <button class="payButton">Pay here</button>
         <div class="payment">
-            <h1 class="payTitle">Personal Information</h1>
-            <form action>
-                <label>Name and Surname</label>
-                <input type="text" name="name" placeholder="John Doe" class="payInput">
-                <br>
-                <label>Phone Number</label>
-                <input type="number" name="phone" placeholder="+6012 345 6781" class="payInput" maxlength="13">
-                <br>
-                <label>Remarks</label>
-                <input type="text" name="name" placeholder="Remarks" class="payInput">
-                <br>
+            <form action="../backend/paymentModel.php" method="post">
                 <h1 class="payTitle">Card Information</h1>
                 <div class="cardIcons"> <!--Card icon missing !!!-->
                     <img src="./img/Contact/visa.png" width="40" alt="" class="cardIcon">
                     <img src="./img/Contact/master.png" alt="" width="40" class="cardIcon">
                 </div>
-                <input type="number" name="card_number" class="payInput" placeholder="Card Number" maxlength="16">
+                <input type="number" name="card_number" class="payInput" placeholder="Card Number" maxlength="16" required>
                 <div class="cardInfo">
-                    <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" maxlength="2">
-                    <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" maxlength="4">
-                    <input type="number" name="cvv" placeholder="cvv" class="payInput sm">
+                    <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" maxlength="2" required>
+                    <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" maxlength="4" required>
+                    <input type="number" name="cvv" placeholder="cvv" class="payInput sm" required>
                 </div>
                 <button type="submit" class="confirmPayButton">Checkout!</button>
                 <span class="close">X</span>

@@ -11,7 +11,7 @@ try {
         throw New Exception("Please fill both the username and password fields!");
     }
 
-    check_username_exists($username);
+    check_username_exists();
     $hashed_password = get_password_from($username);
     if (password_verify($password, $hashed_password)) {
         $id = get_id_from($username);
@@ -29,8 +29,9 @@ catch (Exception $e) {
     echo "Message : " . $e->getMessage();
 }
 
-function check_username_exists($username) : bool {
+function check_username_exists() : bool {
     global $core;
+    global $username;
     if (!$result = $core->select("SELECT * FROM accounts WHERE username = ?", [$username])) {
         throw new Exception("Invalid username or password.");
     }

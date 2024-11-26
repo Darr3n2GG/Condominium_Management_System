@@ -13,8 +13,8 @@ class Core {
         try {
             $this->conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, 
                                         $DATABASE_PASSWORD, $DATABASE_NAME);
-            if ($conn->connect_error) {
-                throw New Exception("Failed to connect to MySQL: " . $conn->connect_error);
+            if ($this->conn->connect_error) {
+                throw New Exception("Failed to connect to MySQL: " . $this->conn->connect_error);
             }
         }
 
