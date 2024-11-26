@@ -18,6 +18,7 @@ function insert_information() {
     $card_number = $_POST["card_number"];
     $expiry_month = $_POST["expiry_month"];
     $expiry_year = $_POST["expiry_year"];
+    //$cvv = $_POST["cvv"]; Don't store this value according to PCI DSS (Payment Card Industry Data Security Standards)
 
     $query = "INSERT INTO payment (id, card_number, expiry_month, expiry_year) VALUES (?, ?, ?, ?)";
     $params = [$id, $card_number, $expiry_month, $expiry_year];
