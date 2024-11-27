@@ -95,15 +95,14 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.3s ease;
 }
 
-.payment-modal.active {
+.payment-modal.active { /*Class not found*/
   visibility: visible;
   opacity: 1;
 }

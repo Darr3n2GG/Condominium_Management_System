@@ -1,6 +1,6 @@
 const payButton = document.querySelector(".payButton");
-const payment = document.querySelector(".payment");
-const close = document.querySelector(".close");
+const payment = document.querySelector(".payment-modal");
+const close = document.querySelector(".closeModal");
 const submit = document.querySelector(".confirmPayButton");
 
 payButton.addEventListener("click", () => {

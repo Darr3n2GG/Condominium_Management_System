@@ -53,7 +53,7 @@ if (!isset($_SESSION['loggedin'])) {
     <button class="payButton">Pay Here</button>
 
     
-    <div class="payment-modal hidden">
+    <div class="payment-modal hidden"> <!--Class "hidden" not found-->
         <div class="payment-container">
             <h1 class="payTitle">Personal Information</h1>
             <form method="post">
@@ -61,14 +61,14 @@ if (!isset($_SESSION['loggedin'])) {
                 <input type="text" id="name" name="name" placeholder="John Doe" class="payInput" required>
                 
                 <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" placeholder="+6012 345 6781" class="payInput" required>
+                <input type="number" id="phone" name="phone" placeholder="+6012 345 6781" class="payInput" required>
                 
                 <h1 class="payTitle">Payment Details</h1>
                 <input type="number" name="amount" placeholder="RM" class="payInput sm" required>
                 <input type="text" name="remarks" placeholder="Remarks" class="payInput">
                 
                 <h1 class="payTitle">Card Information</h1>
-                <div class="cardIcons">
+                <div class="cardIcons"> 
                     <img src="./img/Contact/visa.png" alt="Visa" width="40" class="cardIcon">
                     <img src="./img/Contact/master.png" alt="MasterCard" width="40" class="cardIcon">
                 </div>
