@@ -32,7 +32,7 @@ catch (Exception $e) {
 function check_username_exists() : bool {
     global $core;
     global $username;
-    if (!$result = $core->select("SELECT * FROM accounts WHERE username = ?", [$username])) {
+    if (!$result = $core->Select("SELECT * FROM accounts WHERE username = ?", [$username])) {
         throw new Exception("Invalid username or password.");
     }
     return true;
@@ -40,13 +40,13 @@ function check_username_exists() : bool {
 
 function get_password_from($username) : string {
     global $core;
-    $result = $core->select("SELECT password FROM accounts WHERE username = ?", [$username]);
+    $result = $core->Select("SELECT password FROM accounts WHERE username = ?", [$username]);
     return $result[0]["password"];
 }
 
 function get_id_from($username) : string {
     global $core;
-    $result = $core->select("SELECT id FROM accounts WHERE username = ?", [$username]);
+    $result = $core->Select("SELECT id FROM accounts WHERE username = ?", [$username]);
     return $result[0]["id"];
 }
 ?>

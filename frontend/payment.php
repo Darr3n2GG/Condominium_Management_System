@@ -39,7 +39,7 @@ if (!isset($_SESSION["loggedin"])) {
 		</div>
         <button class="payButton">Pay here</button>
         <div class="payment">
-            <form action="../backend/paymentModel.php" method="post">
+            <form name="paymentForm" action="../backend/paymentModel.php" onsubmit="return validateForm()" method="post">
                 <h1 class="payTitle">Card Information</h1>
                 <div class="cardIcons"> <!--Card icon missing !!!-->
                     <img src="./img/Contact/visa.png" width="40" alt="" class="cardIcon">

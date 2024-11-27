@@ -1,6 +1,6 @@
 <?php
 
-// Core class for database functions like insert, update, delete, select.
+// Core class for database functions like Insert, update, delete, select.
 
 class Core {
     private $conn = null;
@@ -27,27 +27,27 @@ class Core {
         if ($this->conn) { $this->conn->close(); }
     }
 
-    public function select($query, $params=null) : array {
-        $stmt = $this->execute_statement($query, $params);
+    public function Select($query, $params=null) : array {
+        $stmt = $this->executeStatement($query, $params);
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);				
         $stmt->close();
         return $result;
     }
 
-    public function insert($query, $params=null) {
-        $stmt = $this->execute_statement($query, $params);
+    public function Insert($query, $params=null) {
+        $stmt = $this->executeStatement($query, $params);
         $stmt->close();
     }
 
-    public function update($query, $params=null) : void {
-        $this->execute_statement($query, $params)->close();
+    public function Update($query, $params=null) : void {
+        $this->executeStatement($query, $params)->close();
     }
 
-    public function remove($query, $params=null) : void {
-        $this->execute_statement($query ,$params)->close();
+    public function Remove($query, $params=null) : void {
+        $this->executeStatement($query ,$params)->close();
     }
 
-    private function execute_statement($query, $params=null) {
+    private function executeStatement($query, $params=null) {
         try {
             if(!$stmt = $this->conn->prepare($query)) {
                 throw New Exception("Unable to do prepared statement: " . $query);

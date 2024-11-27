@@ -67,7 +67,7 @@ function check_account_exists() {
 function check_username_exists() {
     global $core;
     $username = $_POST["username"];
-    $result = $core->select("SELECT id FROM accounts WHERE username = ?", [$username]);
+    $result = $core->Select("SELECT id FROM accounts WHERE username = ?", [$username]);
     return $result;
 }
 
@@ -76,7 +76,7 @@ function insert_new_account() {
     $username = $_POST["username"];
     $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $email = $_POST["email"];
-    $stmt = $core->insert("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [$username, $hashed_password, $email]);
+    $stmt = $core->Insert("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [$username, $hashed_password, $email]);
     echo '<script type="text/javascript">
             alert("Log in success! Redirecting to log in page...");
             window.location.href = "../frontend/login.html";

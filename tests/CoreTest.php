@@ -19,7 +19,7 @@ class CoreTest extends TestCase {
         $query = "SELECT * FROM accounts WHERE id = ?";
         $params = [1];
         
-        $result = $this->core->select($query, $params);
+        $result = $this->core->Select($query, $params);
         
         $this->assertIsArray($result);
     }
@@ -28,22 +28,22 @@ class CoreTest extends TestCase {
     //     $query = "INSERT INTO accounts (username) VALUES (?)";
     //     $params = ["Test Name"];
         
-    //     $this->core->insert($query, $params);
+    //     $this->core->Insert($query, $params);
         
     //     $query = "SELECT * FROM accounts WHERE username = ?";
-    //     $expected_results = $this->core->select($query, $params);
+    //     $expected_results = $this->core->Select($query, $params);
 
     //     $this->assertEquals($expected_results);
-    //     $this->core->remove("DELETE FROM accounts WHERE username = ?", ['Test Name']);
+    //     $this->core->Remove("DELETE FROM accounts WHERE username = ?", ['Test Name']);
     // }
 
     public function testUpdate() {
         $query = "UPDATE accounts SET username = ? WHERE id = ?";
         $params = ["Updated Name", 1];
 
-        $this->core->update($query, $params);
+        $this->core->Update($query, $params);
         
-        $result = $this->core->select("SELECT * FROM accounts WHERE id = ?", [1]);
+        $result = $this->core->Select("SELECT * FROM accounts WHERE id = ?", [1]);
         $this->assertEquals("Updated Name", $result[0]["username"]);
     }
 
@@ -51,9 +51,9 @@ class CoreTest extends TestCase {
         $query = "DELETE FROM accounts WHERE id = ?";
         $params = [1];
 
-        $this->core->remove($query, $params);
+        $this->core->Remove($query, $params);
         
-        $result = $this->core->select("SELECT * FROM accounts WHERE id = ?", [1]);
+        $result = $this->core->Select("SELECT * FROM accounts WHERE id = ?", [1]);
         $this->assertCount(0, $result);
     }
 
