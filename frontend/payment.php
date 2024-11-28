@@ -8,7 +8,12 @@ if (!isset($_SESSION["loggedin"])) {
 }
 
 $core = New Core;
-$rows = $core->Select("SELECT payment_id, date, amount, remarks FROM bills");
+
+$payment_row = $core->Select("SELECT payment_id FROM payments WHERE paid = 0");
+if ($payment_row) {
+    $payment_id = $payment_row[0]["payment_id"];
+    $rows = $core->Select("SELECT date, amount, remarks FROM bills WHERE payment_id = ?", [$payment_id]);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,41 +36,47 @@ $rows = $core->Select("SELECT payment_id, date, amount, remarks FROM bills");
 		<div class="content">
 			<h2>Payment Page</h2>
 			<div>
-				<p>Your payment history are below:</p>
-				<table class="table">
-					<tr>
-						<th>Date <th>Amount <th>Remarks
-					</tr>
-                <?php foreach ($rows as $row) { ?>
-                    <?php if ($row["payment_id"] == NULL) { ?>
+				<p> <?php if ($payment_row) { 
+                    echo "Your payment history are below:"; 
+                } else {
+                    echo "No payment";
+                }?> </p>
+                <?php if ($payment_row) { ?>
+                    <table class="table">
+                        <tr>
+                            <th>Date <th>Amount <th>Remarks
+                        </tr>
+                    <?php foreach ($rows as $row) { ?>
                         <tr>
                             <td> <?php echo $row["date"]; ?> </td>
                             <td> <?php echo "RM"  . $row["amount"]; ?> </td>
                             <td> <?php echo $row["remarks"]; ?> </td>
                         </tr>
                     <?php } ?>
+                    </table>
                 <?php } ?>
-				</table>
 			</div>
 		</div>
-        <button class="payButton">Pay here</button>
-        <div class="payment">
-            <form name="paymentForm" action="../backend/paymentModel.php" method="post">
-                <h1 class="payTitle">Card Information</h1>
-                <div class="cardIcons"> <!--Card icon missing !!!-->
-                    <img src="./img/Contact/visa.png" width="40" alt="" class="cardIcon">
-                    <img src="./img/Contact/master.png" alt="" width="40" class="cardIcon">
-                </div>
-                <input type="number" name="card_number" class="payInput" placeholder="Card Number" required>
-                <div class="cardInfo">
-                    <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" min="1" max="12" required>
-                    <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" required>
-                    <input type="number" name="cvv" placeholder="cvv" class="payInput sm" required>
-                </div>
-                <button type="submit" class="confirmPayButton">Checkout!</button>
-                <span class="close">X</span>
-            </form>
-        </div>
+        <?php if ($payment_row) { ?>
+            <button class="payButton">Pay here</button>
+            <div class="payment">
+                <form name="paymentForm" action="../backend/paymentModel.php" method="post">
+                    <h1 class="payTitle">Card Information</h1>
+                    <div class="cardIcons"> <!--Card icon missing !!!-->
+                        <img src="./img/Contact/visa.png" width="40" alt="" class="cardIcon">
+                        <img src="./img/Contact/master.png" alt="" width="40" class="cardIcon">
+                    </div>
+                    <input type="number" name="card_number" class="payInput" placeholder="Card Number" required>
+                    <div class="cardInfo">
+                        <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" min="1" max="12" required>
+                        <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" required>
+                        <input type="number" name="cvv" placeholder="cvv" class="payInput sm" required>
+                    </div>
+                    <button type="submit" class="confirmPayButton">Checkout!</button>
+                    <span class="close">X</span>
+                </form>
+            </div>
+            <?php } ?>
         <script src="../scripts/payment.js"></script>
 	</body>
 </html>

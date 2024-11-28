@@ -36,8 +36,7 @@ class Core {
 
     public function Insert($query, $params=null) : void {
         $stmt = $this->executeStatement($query, $params);
-        $count = $stmt->rowCount();
-        if ($count == 0) {
+        if (!$stmt) {
             throw new Exception("No rows were inserted.");
         }
         $stmt->close();
@@ -45,7 +44,7 @@ class Core {
 
     public function Update($query, $params=null) : void {
         $stmt = $this->executeStatement($query, $params);
-        $count = $stmt->rowCount();
+        $count = $stmt->num_rows;
         if ($count == 0) {
             throw new Exception("No rows were updated.");
         }
