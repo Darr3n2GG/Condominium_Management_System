@@ -12,23 +12,17 @@ close.addEventListener("click", () => {
     payment.style.display = "none";
 });
 
-function validateForm() {
-    if (!validateExpiryMonth() || !validateExpiryYear())
-        return false;
-}
+paymentForm["expiry_year"].min = new Date().getFullYear();
+paymentForm["expiry_year"].max = new Date().getFullYear() + 10;
 
-function validateExpiryYear() {
-    let expiry_year = paymentForm["expiry_year"].value;
-    if (expiry_year.length != 4) {
-        alert("Expiry year must be 4 digits");
-        return false;
+paymentForm["expiry_year"].oninput = function () {
+    if (this.value.length > 4) {
+        this.value = this.value.slice(0,4); 
     }
 }
 
-function validateExpiryMonth() {
-    let expiry_month = paymentForm["expiry_month"].value;
-    if (expiry_month < 1 || expiry_month > 12) {
-        alert("Expiry month must be between 1 and 12");
-        return false;
+paymentForm["expiry_month"].oninput = function () {
+    if (this.value.length > 2) {
+        this.value = this.value.slice(0,2); 
     }
 }

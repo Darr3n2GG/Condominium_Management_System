@@ -1,3 +1,7 @@
+.content > div > table {
+    empty-cells: hide;
+}
+
 .payButton {
     position: sticky;
     left: 50%;

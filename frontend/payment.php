@@ -1,9 +1,14 @@
 <?php
+require_once("../lib/Core.php");
+
 session_start();
 if (!isset($_SESSION["loggedin"])) {
 	header("Location: login.html");
 	exit;
 }
+
+$core = New Core;
+$rows = $core->Select("SELECT payment_id, date, amount, remarks FROM bills");
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,26 +34,32 @@ if (!isset($_SESSION["loggedin"])) {
 				<p>Your payment history are below:</p>
 				<table class="table">
 					<tr>
-						<th>Date <th>Payment <th>Remarks
+						<th>Date <th>Amount <th>Remarks
 					</tr>
-                    <tr>
-                        <td>25 October 2024 <td>RM 10.00 <td> Electricity Fee
-                    </tr>
+                <?php foreach ($rows as $row) { ?>
+                    <?php if ($row["payment_id"] == NULL) { ?>
+                        <tr>
+                            <td> <?php echo $row["date"]; ?> </td>
+                            <td> <?php echo "RM"  . $row["amount"]; ?> </td>
+                            <td> <?php echo $row["remarks"]; ?> </td>
+                        </tr>
+                    <?php } ?>
+                <?php } ?>
 				</table>
 			</div>
 		</div>
         <button class="payButton">Pay here</button>
         <div class="payment">
-            <form name="paymentForm" action="../backend/paymentModel.php" onsubmit="return validateForm()" method="post">
+            <form name="paymentForm" action="../backend/paymentModel.php" method="post">
                 <h1 class="payTitle">Card Information</h1>
                 <div class="cardIcons"> <!--Card icon missing !!!-->
                     <img src="./img/Contact/visa.png" width="40" alt="" class="cardIcon">
                     <img src="./img/Contact/master.png" alt="" width="40" class="cardIcon">
                 </div>
-                <input type="number" name="card_number" class="payInput" placeholder="Card Number" maxlength="16" required>
+                <input type="number" name="card_number" class="payInput" placeholder="Card Number" required>
                 <div class="cardInfo">
-                    <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" maxlength="2" required>
-                    <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" maxlength="4" required>
+                    <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" min="1" max="12" required>
+                    <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" required>
                     <input type="number" name="cvv" placeholder="cvv" class="payInput sm" required>
                 </div>
                 <button type="submit" class="confirmPayButton">Checkout!</button>
