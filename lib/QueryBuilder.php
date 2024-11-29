@@ -1,4 +1,8 @@
 <?php
+// Object for building mysql queries using query data
+
+use function PHPUnit\Framework\stringContains;
+
 require_once("Query.php");
 
 class QueryBuilder {
@@ -8,29 +12,10 @@ class QueryBuilder {
         $this->queryData = $query;
     }
 
-    public function insert($data) {
-        $columns = implode(", ", array_keys($data));
-        $placeholders = implode(", ", array_fill(0, count($data), "?"));
+    public function create() {
+        $columns = $this->setupColumns($this->queryData->columns);
+        $placeholders = implode(", ", array_fill(0, count($this->queryData->columns), "?"));
         return "INSERT INTO {$this->queryData->table} ($columns) VALUES ($placeholders)";
-    }
-
-    public function update($data) {
-        $setClause = implode(", ", array_map(fn($col) => "$col = ?", array_keys($data)));
-        $query = "UPDATE {$this->queryData->table} SET $setClause";
-        if ($this->queryData->conditions) {
-            $conditions = $this->setupConditions($this->queryData->conditions);
-            $query .= " WHERE " . implode(" AND ", $conditions);
-        }
-        return $query;
-    }
-
-    public function delete() {
-        $query = "DELETE FROM {$this->queryData->table}";
-        if ($this->queryData->conditions) {
-            $conditions = $this->setupConditions($this->queryData->conditions);
-            $query .= " WHERE " . implode(" AND ", $conditions);
-        }
-        return $query;
     }
 
     public function read() {
@@ -50,20 +35,53 @@ class QueryBuilder {
         return $query;
     }
 
+    public function update() {
+        $setClause = $this->setupSetClause($this->queryData->columns);
+        $query = "UPDATE {$this->queryData->table} SET $setClause";
+        if ($this->queryData->conditions) {
+            $conditions = $this->setupConditions($this->queryData->conditions);
+            $query .= " WHERE " . implode(" AND ", $conditions);
+        }
+        return $query;
+    }
+
+    public function delete() {
+        $query = "DELETE FROM {$this->queryData->table}";
+        if ($this->queryData->conditions) {
+            $conditions = $this->setupConditions($this->queryData->conditions);
+            $query .= " WHERE " . implode(" AND ", $conditions);
+        }
+        return $query;
+    }
+
     private function setupConditions($conditions) {
         for ($i = 0; $i < sizeof($conditions) - 1; $i++) {
-            $conditions[$i] = $conditions["column"] . " "  . $conditions["operator"] . " ?";
+            $condition = $conditions[$i];
+            if ($condition["is_null"]) {
+                $conditions[$i] = $condition["column"] . " IS NULL";
+            } else {
+                $conditions[$i] = $conditions["column"] . " "  . $conditions["operator"] . " ?";
+            }
         }
         return $conditions;
     }
 
-    private function setupColumns($columns = "*") {
-        $columns = is_array($columns) ? implode(", ", $columns) : $columns;
+    private function setupColumns($columns = ["*"]) {
+        $columns = sizeof($columns) > 0 ? implode(", ", $columns) : $columns[0];
         return $columns;
     }
 
     private function setupOrderBy($orderBy) {
         $orderBy = $orderBy["column"] . " " . $orderBy["direction"];
         return $orderBy;
+    }
+
+    private function setupSetClause($columns) {
+        if (sizeof($columns) > 0) {
+            $setClause = implode(", ", array_map(fn($col) => "$col = ?", $columns));
+        } else {
+            $setClause = implode("", array_map(fn($col) => "$col = ?", $columns));
+        }
+        return $setClause;
     }
 }

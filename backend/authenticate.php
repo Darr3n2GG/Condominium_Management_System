@@ -2,13 +2,13 @@
 require_once("../lib/Core.php");
 
 session_start();
-$core = New Core;
+$core = new Core;
 $username = $_POST["username"];
 $password = $_POST["password"];
 
 try {
     if (!isset($username, $password)) {
-        throw New Exception("Please fill both the username and password fields!");
+        throw new Exception("Please fill both the username and password fields!");
     }
 
     check_username_exists();
@@ -21,32 +21,43 @@ try {
         $_SESSION["id"] = $id;
         header("Location: ../frontend/home.php");
     } else {
-        throw New Exception("Invalid username or password");
+        throw new Exception("Invalid username or password");
     }
-}
-
-catch (Exception $e) {
+} catch (Exception $e) {
     echo "Message : " . $e->getMessage();
 }
 
-function check_username_exists() : bool {
+function check_username_exists(): bool {
     global $core;
     global $username;
-    if (!$result = $core->Select("SELECT * FROM accounts WHERE username = ?", [$username])) {
+    $query = new Query;
+    $query->table = "accounts";
+    $query->columns = ["*"];
+    $query->setConditions(["username", "="]);
+
+    $result = $core->read($query, [$username]);
+    if (!$result) {
         throw new Exception("Invalid username or password.");
     }
     return true;
 }
 
-function get_password_from($username) : string {
+function get_password_from($username): string {
     global $core;
-    $result = $core->Select("SELECT password FROM accounts WHERE username = ?", [$username]);
+    $query = new Query;
+    $query->table = "accounts";
+    $query->columns = ["password"];
+    $query->setConditions(["username", "="]);
+    $result = $core->read($query, [$username]);
     return $result[0]["password"];
 }
 
-function get_id_from($username) : string {
+function get_id_from($username): string {
     global $core;
-    $result = $core->Select("SELECT id FROM accounts WHERE username = ?", [$username]);
+    $query = new Query;
+    $query->table = "accounts";
+    $query->columns = "id";
+    $query->setConditions(["username", "="]);
+    $result = $core->read($query, [$username]);
     return $result[0]["id"];
 }
-?>

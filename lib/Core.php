@@ -5,7 +5,6 @@ require_once("QueryBuilder.php");
 
 class Core {
     private $conn;
-    private $QueryBuilder;
 
     public function __construct(
         $HOST = "localhost",
@@ -23,8 +22,6 @@ class Core {
             if ($this->conn->connect_error) {
                 throw new Exception("Failed to connect to MySQL: " . $this->conn->connect_error);
             }
-
-            $this->QueryBuilder = new QueryBuilder;
         } catch (Exception $e) {
             exit($e->getMessage());
         }
@@ -36,10 +33,9 @@ class Core {
         }
     }
 
-    public function create($table, array $params = null): void {
-        $query = $this->QueryBuilder
-            ->table($table)
-            ->insert($params);
+    public function create(Query $queryData, array $params): void {
+        $QueryBuilder = new QueryBuilder($queryData);
+        $query = $QueryBuilder->create();
         $stmt = $this->executeStatement($query);
         if (!$stmt) {
             throw new Exception("No rows were inserted.");
@@ -47,18 +43,18 @@ class Core {
         $stmt->close();
     }
 
-    public function read($table, array $params = null, array $conditions = null): array {
-        $query = $this->QueryBuilder
-            ->table($table)
-            ->select($params)
-            ->where($conditions[0], $conditions[1], $conditions[2]);
+    public function read(Query $queryData, array $params): array {
+        $QueryBuilder = new QueryBuilder($queryData);
+        $query = $QueryBuilder->read();
         $stmt = $this->executeStatement($query, $params);
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
         return $result;
     }
 
-    public function update($query, $params = null): void {
+    public function update(Query $queryData, array $params): void {
+        $QueryBuilder = new QueryBuilder($queryData);
+        $query = $QueryBuilder->update();
         $stmt = $this->executeStatement($query, $params);
         if (!$stmt) {
             throw new Exception("No rows were updated.");
@@ -66,11 +62,17 @@ class Core {
         $stmt->close();
     }
 
-    public function delete($query, $params = null): void {
-        $this->executeStatement($query, $params)->close();
+    public function delete(Query $queryData, array $params): void {
+        $QueryBuilder = new QueryBuilder($queryData);
+        $query = $QueryBuilder->delete();
+        $stmt = $this->executeStatement($query, $params);
+        if (!$stmt) {
+            throw new Exception("No rows were deleted.");
+        }
+        $stmt->close();
     }
 
-    private function executeStatement($query, $params = null) {
+    private function executeStatement($query, $params = []): mysqli_stmt {
         try {
             if (!$stmt = $this->conn->prepare($query)) {
                 throw new Exception("Unable to do prepared statement: " . $query);
