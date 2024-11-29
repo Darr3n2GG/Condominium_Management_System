@@ -36,7 +36,7 @@ class Core {
     public function create(Query $queryData, array $params): void {
         $QueryBuilder = new QueryBuilder($queryData);
         $query = $QueryBuilder->create();
-        $stmt = $this->executeStatement($query);
+        $stmt = $this->executeStatement($query, $params);
         if (!$stmt) {
             throw new Exception("No rows were inserted.");
         }

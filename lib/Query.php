@@ -4,11 +4,11 @@
 class Query {
     const ASC = "ASC";
     const DESC = "DESC";
-    public string $table;
-    public array $columns;
-    public array $conditions;
-    public string $limit;
-    public array $orderBy;
+    public string $table = "";
+    public array $columns = [];
+    public array $conditions = [];
+    public string $limit = "";
+    public array $orderBy = [];
 
     public function setConditions(array $conditions): void {
         for ($i = 0; $i < sizeof($conditions); $i++) {

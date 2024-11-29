@@ -60,7 +60,7 @@ function check_username_exists() {
     $query = new Query;
     $query->table = "accounts";
     $query->columns = ["id"];
-    $query->setConditions(["name", "="]);
+    $query->setConditions([["name", "=", false]]);
 
     $result = $core->read($query, [$username]);
     return $result;

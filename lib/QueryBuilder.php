@@ -1,8 +1,6 @@
 <?php
 // Object for building mysql queries using query data
 
-use function PHPUnit\Framework\stringContains;
-
 require_once("Query.php");
 
 class QueryBuilder {
@@ -55,12 +53,12 @@ class QueryBuilder {
     }
 
     private function setupConditions($conditions) {
-        for ($i = 0; $i < sizeof($conditions) - 1; $i++) {
+        for ($i = 0; $i < sizeof($conditions); $i++) {
             $condition = $conditions[$i];
             if ($condition["is_null"]) {
                 $conditions[$i] = $condition["column"] . " IS NULL";
             } else {
-                $conditions[$i] = $conditions["column"] . " "  . $conditions["operator"] . " ?";
+                $conditions[$i] = $conditions["column"] . " " . $conditions["operator"] . " ?";
             }
         }
         return $conditions;
