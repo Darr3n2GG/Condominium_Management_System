@@ -39,7 +39,7 @@ if ($payment_row) {
 				<p> <?php if ($payment_row) { 
                     echo "Your payment history are below:"; 
                 } else {
-                    echo "No payment";
+                    echo "No payment.";
                 }?> </p>
                 <?php if ($payment_row) { ?>
                     <table class="table">
@@ -49,7 +49,7 @@ if ($payment_row) {
                     <?php foreach ($rows as $row) { ?>
                         <tr>
                             <td> <?php echo $row["date"]; ?> </td>
-                            <td> <?php echo "RM"  . $row["amount"]; ?> </td>
+                            <td> <?php echo "RM" . $row["amount"]; ?> </td>
                             <td> <?php echo $row["remarks"]; ?> </td>
                         </tr>
                     <?php } ?>
