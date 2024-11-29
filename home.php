@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     <header class="home">
         <div class="home-content">
-            <h1>Welcome to Island Crest</h1> <!--Hardly visible due to the background-->
+            <h1>Welcome to Island Crest</h1>
             <p>Your dream home in the heart of the city.</p>
             <a href="#details" class="btn">Learn More</a>
         </div>

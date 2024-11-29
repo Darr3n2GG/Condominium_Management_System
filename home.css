@@ -62,6 +62,8 @@ body {
 }
 
 .home-content h1 {
+    color: black;
+    -webkit-text-stroke: 1px white;
     font-size: 48px;
     margin-bottom: 10px;
 }
