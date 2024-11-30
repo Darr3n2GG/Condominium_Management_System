@@ -55,7 +55,7 @@ class QueryBuilder {
     private function setupConditions($conditions) {
         for ($i = 0; $i < sizeof($conditions); $i++) {
             $condition = $conditions[$i];
-            if ($condition["is_null"]) {
+            if ($condition) {
                 $conditions[$i] = $condition["column"] . " IS NULL";
             } else {
                 $conditions[$i] = $condition["column"] . " " . $condition["operator"] . " ?";
@@ -69,8 +69,8 @@ class QueryBuilder {
         return $columns;
     }
 
-    private function setupOrderBy($orderBy) {
-        $orderBy = $orderBy["column"] . " " . $orderBy["direction"];
+    private function setupOrderBy(OrderBy $orderBy) {
+        $orderBy = $orderBy->column . " " . $orderBy->direction;
         return $orderBy;
     }
 

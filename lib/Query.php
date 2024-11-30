@@ -2,30 +2,34 @@
 // Data structure for a mysql query
 
 class Query {
-    public string $table = "";
-    public array $columns = [];
-    public array $conditions = [];
-    public string $limit = "";
+    public string $table;
+    public array $columns;
+    public Conditions $conditions;
+    public string $limit;
     public OrderBy $orderBy;
+}
 
-    public function setConditions($conditions): void {
+class Conditions extends ArrayObject {
+    public $conditions;
+
+    public function __construct(Condition ...$conditions) {
         $this->conditions = $conditions;
     }
 }
 
-abstract class Condition {
+class Condition {
     public $column;
     public $operator;
+}
 
+class OperatorCondition extends Condition {
     public function __construct(string $column, string $operator) {
         $this->column = $column;
         $this->operator = $operator;
     }
 }
 
-class NullCondition {
-    public $column;
-
+class NullCondition extends Condition {
     public function __construct(string $column) {
         $this->column = $column;
     }
