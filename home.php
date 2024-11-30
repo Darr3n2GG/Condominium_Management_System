@@ -28,7 +28,7 @@ if (isset($_SESSION["loggedin"])) {
                 <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
                 <a href="payment.php" id="paymentButton"><i class="fas fa-cash-register"></i>Payment</a>
                 <a href="profile.php"><i class="fas fa-user-circle"></i><?= htmlspecialchars($userState, ENT_QUOTES) ?></a>
-                <a href="../controller/logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a href="logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </ul>
         </div>
     </nav>
@@ -98,7 +98,7 @@ if (isset($_SESSION["loggedin"])) {
     <script type="text/javascript">
         const loggedIn = <?php echo $loggedIn; ?>;
     </script>
-    <script type="text/javascript" src="../scripts/checkLoggedIn.js"></script>
+    <script type="text/javascript" src="checkLoggedIn.js"></script>
     <script type="text/javascript" src="home.js"></script>
 </body>
 

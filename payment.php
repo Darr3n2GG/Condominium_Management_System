@@ -26,7 +26,7 @@ if (!isset($_SESSION["loggedin"])) {
                 <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
                 <a href="payment.php"><i class="fas fa-user-circle"></i>Payment</a>
                 <a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-                <a href="../controller/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </ul>
         </div>
     </nav>
@@ -85,7 +85,7 @@ if (!isset($_SESSION["loggedin"])) {
         </div>
     </div>
 
-    <script src="../scripts/payment.js"></script>
+    <script src="payment.js"></script>
 </body>
 
 </html>
