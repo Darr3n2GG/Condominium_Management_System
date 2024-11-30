@@ -5,45 +5,95 @@ $loggedIn = isset($_SESSION["loggedin"]);
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>World Residence Centre</title>
-		<link href="../assets/style.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    </head>
-	<body class="loggedin">
-		<nav class="navtop">
-			<div>
-				<h1>World Residence Centre</h1>
-                <a href="payment.php" id="paymentButton"><i class="fas fa-cash-register"></i>Payment</a>
-				<a href="profile.php" id="profileButton"><i class="fas fa-user-circle"></i>Profile</a>
-                <a href="login.html" id="logInButton"><i class="fas fa-user-circle"></i>Login</a>
-				<a href="../backend/logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i>Logout</a>
-			</div>
-		</nav>
-		<div class="content">
-			<h2>Home Page</h2>
-            <h2>Welcome to the World Residence Center Website!</h2>
-            <p>The World Residence Center is a renowned condominium complex, recognized for its architectural distinction and luxurious amenities. Situated in a prime location in a bustling urban area, the World Residence Center has earned a reputation as one of the most prestigious residential addresses in its city. Its design, combining modern living with comfort and functionality, sets it apart as a symbol of luxury and convenience.</p>
-            <h2>Architectural Design and Layout</h2>
-            <p>The World Residence Center stands out for its cutting-edge architectural design. Its sleek, modern facade features a combination of glass and steel, which gives it a futuristic look while maximizing natural light within the building. The design emphasizes both aesthetics and practicality, offering residents panoramic frontends of the city skyline, as well as efficient space utilization within each unit.
-            Inside, the condominium boasts spacious, well-planned apartments, ranging from one-bedroom units to expansive penthouse suites. Each unit is designed with high ceilings, large windows, and open floor plans to create an airy and inviting atmosphere. High-quality materials, such as marble flooring and premium fixtures, are used throughout, enhancing the luxurious feel.
-            The World Residence Center’s layout also prioritizes privacy and exclusivity. Many units come with private balconies or terraces, giving residents their own personal outdoor space to enjoy the city frontends. The building"s elevators are designed to serve only a few units per floor, ensuring minimal disturbance and a high level of security.</p>
-            <h2>Amenities</h2>
-            <p>One of the key features that elevate the World Residence Center is its extensive range of high-end amenities. Residents have access to a private fitness center, which is fully equipped with state-of-the-art gym equipment, a yoga studio, and a heated indoor swimming pool. There are also spa facilities, including saunas and massage rooms, for relaxation and rejuvenation.
-            For social gatherings, the World Residence Center offers a luxurious lounge area, a private dining room, and a rooftop garden with breathtaking frontends. The rooftop space is particularly popular among residents for hosting events or simply unwinding after a long day. A concierge service is available 24/7 to assist with anything from restaurant reservations to dry cleaning, ensuring that residents’ needs are always met.
-            The condominium also places a strong emphasis on safety and convenience. It is equipped with a high-tech security system, including keycard access, surveillance cameras, and on-site security personnel. Additionally, the building offers ample parking space and features electric vehicle charging stations, keeping pace with modern demands for sustainability.</p>
-            <h2>Prime Location</h2>
-            <p>The location of the World Residence Center further adds to its appeal. Situated in a prime district, it offers easy access to major business hubs, shopping centers, restaurants, and cultural attractions. Its proximity to public transportation and key roadways makes commuting to other parts of the city convenient. For residents who prefer a more active lifestyle, nearby parks and recreational facilities provide opportunities for outdoor activities.
-            The surrounding neighborhood is a blend of upscale residential properties, fine dining establishments, and high-end retail stores, giving residents an ideal balance between city living and a serene environment.</p>
-            <h2>Community and Lifestyle</h2>
-            <p>Living in the World Residence Center is not just about luxury; it is also about becoming part of an exclusive community. The condominium fosters a sense of belonging among its residents, hosting regular social events and activities that encourage interaction. From wine tastings to fitness challenges, there are plenty of opportunities for residents to connect and build relationships.
-            The lifestyle in the World Residence Center is tailored to professionals, families, and individuals seeking both comfort and prestige. Its high-end features, combined with the vibrant community atmosphere, make it a sought-after residence for those who value quality living.</p>
-            <h2>What are you waiting for? Make the World Residence Center your first and only home!</h2>
+
+<head>
+    <meta charset="utf-8">
+    <title>World Residence Centre</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link href="../assets/home.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="home.php" class="logo">Island Crest</a>
+            <ul class="nav-links">
+                <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
+                <li><a href="payment.php" id="paymentButton"><i class="fas fa-cash-register"></i>Payment</a></li>
+                <li><a href="profile.php" id="profileButton"><i class="fas fa-user-circle"></i>Profile</a></li>
+                <li><a href="login.html" id="logInButton"><i class="fas fa-user-circle"></i>Login</a></li>
+                <li><a href="../backend/logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
         </div>
+    </nav>
+
+    <header class="home">
+        <div class="home-content">
+            <h1>Welcome to Island Crest</h1>
+            <p>Your dream home in the heart of the city.</p>
+            <a href="#details" class="btn">Learn More</a>
+        </div>
+    </header>
+
+    <main id="details" class="container">
+        <section class="section">
+            <h2>About Island Crest</h2>
+            <p>The Island Crest is a renowned condominium complex, blending luxurious living with modern convenience.</p>
+
+            <section class="features">
+                <div class="feature">
+                    <i class="fas fa-building fa-3x"></i>
+                    <h3>Architectural Design</h3>
+                    <p>Cutting-edge design combining glass and steel for modern aesthetics and efficiency.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-swimming-pool fa-3x"></i>
+                    <h3>Luxurious Amenities</h3>
+                    <p>Private fitness center, spa facilities, rooftop garden, and more.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt fa-3x"></i>
+                    <h3>Prime Location</h3>
+                    <p>Located in the heart of the city with access to major hubs and attractions.</p>
+                </div>
+            </section>
+        </section>
+
+        <section class="section">
+            <h2>Community & Lifestyle</h2>
+            <p>Join an exclusive community where luxury meets a vibrant lifestyle. Regular events and activities await you.</p>
+
+            <section class="features">
+                <div class="feature">
+                    <i class="fas fa-users fa-3x"></i>
+                    <h3>Social Gatherings</h3>
+                    <p>Social gatherings to stimulate the relationship among residents</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-dumbbell fa-3x"></i>
+                    <h3>Fitness Challenges and Health Programs</h3>
+                    <p>Ensure residents have healthy lifestyle and a fit body.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-child fa-3x"></i>
+                    <h3>Children’s play areas and kid-friendly activities</h3>
+                    <p>Maintain a family-oriented community</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Island Crest. All rights reserved.</p>
+            <a href="ad-home.html"><i class="fa-solid fa-user-tie"></i>Admin Page</a>
+        </div>
+
         <script type="text/javascript">
             var loggedIn = <?php echo json_encode($loggedIn); ?>;
         </script>
-        <script type="text/javascript" src="../scripts/checkLoggedIn.js"></script>
-	</body>
+        <script type="text/javascript" src="../scripts/home.js"></script>
+</body>
+
 </html>

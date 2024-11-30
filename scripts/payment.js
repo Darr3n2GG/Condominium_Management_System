@@ -1,16 +1,16 @@
 const payButton = document.querySelector(".payButton");
-const payment = document.querySelector(".payment");
-const close = document.querySelector(".close");
+const payment = document.querySelector(".payment-modal");
+const close = document.querySelector(".closeModal");
 const submit = document.querySelector(".confirmPayButton");
 const paymentForm = document.forms["paymentForm"]
 
-payButton.addEventListener("click", () => {
-    payment.style.display = "flex";
-});
+// payButton.addEventListener("click", () => {
+//     payment.toggleClass("active");
+// });
 
-close.addEventListener("click", () => {
-    payment.style.display = "none";
-});
+// close.addEventListener("click", () => {
+//     payment.toggleClass("active");;
+// });
 
 paymentForm["expiry_year"].min = new Date().getFullYear();
 paymentForm["expiry_year"].max = new Date().getFullYear() + 10;
