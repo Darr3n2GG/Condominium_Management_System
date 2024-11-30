@@ -90,6 +90,7 @@ if (!isset($_SESSION['loggedin'])) {
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Island Crest. All rights reserved.</p>
+            <a href="admin/ad-home.html"><i class="fa-solid fa-user-tie"></i> Admin Page</a>
         </div>
     </footer>
 

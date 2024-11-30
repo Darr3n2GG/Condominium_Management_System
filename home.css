@@ -118,3 +118,8 @@ body {
 .footer p {
     margin: 0;
 }
+
+.footer div a {
+    color: white;
+    text-decoration-line: none;
+}
