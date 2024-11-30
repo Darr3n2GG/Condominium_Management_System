@@ -1,14 +1,14 @@
 <?php
 require_once("../lib/Core.php");
 
-if (!isset($_POST["username"], $_POST["password"], $_POST["email"])) {
+if (!isset($_POST["name"], $_POST["password"], $_POST["email"])) {
     echo '<script type="text/javascript">
 		alert("Please complete the registration form!");
 		window.location.href = "../frontend/register.html";
 	</script>';
 }
 
-if (empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["email"])) {
+if (empty($_POST["name"]) || empty($_POST["password"]) || empty($_POST["email"])) {
     echo '<script type="text/javascript">
 		alert("Please complete the registration form");
 		window.location.href = "../frontend/register.html";
@@ -22,7 +22,7 @@ if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 	</script>';
 }
 
-if (preg_match("/^[a-zA-Z0-9]+$/", $_POST["username"]) == 0) {
+if (preg_match("/^[a-zA-Z0-9]+$/", $_POST["name"]) == 0) {
     echo '<script type="text/javascript">
 		alert("Username is not valid! Username shall only consists of letters and numbers!");
 		window.location.href = "../frontend/register.html";
@@ -47,28 +47,31 @@ try {
 }
 
 function check_account_exists() {
-    if (check_username_exists()) {
+    if (check_name_exists()) {
         throw new Exception("Username exists, please choose another!");
     }
+    echo "test";
     return true;
 }
 
-function check_username_exists() {
+function check_name_exists() {
     global $core;
-    $username = $_POST["username"];
+    $name = $_POST["name"];
 
     $query = new Query;
     $query->table = "accounts";
     $query->columns = ["id"];
-    $query->setConditions([new Condition("name", "=")]);
+    $query->conditions = new Conditions(
+        [new Condition("name", "=")]
+    );
 
-    $result = $core->read($query, [$username]);
+    $result = $core->read($query, [$name]);
     return $result;
 }
 
 function insert_new_account() {
     global $core;
-    $username = $_POST["username"];
+    $name = $_POST["name"];
     $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $email = $_POST["email"];
 
@@ -76,7 +79,7 @@ function insert_new_account() {
     $query->table = "accounts";
     $query->columns = ["name", "password", "email"];
 
-    $core->create($query, [$username, $hashed_password, $email]);
+    $core->create($query, [$name, $hashed_password, $email]);
 
     echo '<script type="text/javascript">
             alert("Log in success! Redirecting to log in page...");

@@ -10,19 +10,19 @@ class Query {
 }
 
 class Conditions extends ArrayObject {
-    public $conditions;
-
-    public function __construct(Condition ...$conditions) {
-        $this->conditions = $conditions;
+    public function __call($func, $argv) {
+        if (!is_callable($func) || substr($func, 0, 6) !== 'array_') {
+            throw new BadMethodCallException(__CLASS__ . '->' . $func);
+        }
+        return call_user_func_array($func, array_merge(array($this->getArrayCopy()), $argv));
     }
 }
 
 class Condition {
     public $column;
     public $operator;
-}
+    public $direction;
 
-class OperatorCondition extends Condition {
     public function __construct(string $column, string $operator) {
         $this->column = $column;
         $this->operator = $operator;
@@ -30,17 +30,17 @@ class OperatorCondition extends Condition {
 }
 
 class NullCondition extends Condition {
+    // overrides parent class construct function
     public function __construct(string $column) {
         $this->column = $column;
     }
 }
 
-class OrderBy {
+class OrderBy extends Condition {
     const ASC = "ASC";
     const DESC = "DESC";
-    public $column;
-    public $direction;
 
+    // overrides parent class construct function
     public function __construct($column, $direction) {
         $this->$column = $column;
         $this->direction = $direction;

@@ -20,10 +20,10 @@ function insertCardInformation() {
     $query = new Query;
     $query->table = "accounts";
     $query->columns = ["card_number", "expiry_month", "expiry_year"];
-    $query->setConditions([
-        ["card_number", "", true],
-        ["expiry_month", "", true],
-        ["expiry_year", "", true]
+    $query->conditions = new Conditions([
+        new NullCondition("card_number"),
+        new NullCondition("expiry_month"),
+        new NullCondition("expiry_year")
     ]);
     $params = [$card_number, $expiry_month, $expiry_year];
     $core->update($query, $params);

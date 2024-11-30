@@ -21,14 +21,14 @@ After downloading xampp and the zip file,
 ```
 CREATE TABLE IF NOT EXISTS accounts (
     id int(11) NOT NULL AUTO_INCREMENT,
-    username varchar(50) NOT NULL,
+    name varchar(50) NOT NULL,
     password varchar(255) NOT NULL,
     email varchar(100) NOT NULL,
     house_number int(255) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO accounts (id, username, password, email, house_number) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com', 1);
+INSERT INTO accounts (id, name, password, email, house_number) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com', 1);
 
 CREATE TABLE IF NOT EXISTS payment (
   payment_id int(11) NOT NULL AUTO_INCREMENT,

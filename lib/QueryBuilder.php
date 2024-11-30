@@ -19,49 +19,57 @@ class QueryBuilder {
     public function read() {
         $columns = $this->setupColumns($this->queryData->columns);
         $query = "SELECT {$columns} FROM {$this->queryData->table}";
-        if ($this->queryData->conditions) {
-            $conditions = $this->setupConditions($this->queryData->conditions);
-            $query .= " WHERE " . implode(" AND ", $conditions);
+        if (isset($this->queryData->conditions)) {
+            $query = $this->appendWhereQuery($query, $this->queryData->conditions);
         }
-        if ($this->queryData->orderBy) {
-            $orderBy = $this->setupOrderBy($this->queryData->orderBy);
-            $query .= " ORDER BY {$orderBy}";
+        if (isset($this->queryData->orderBy)) {
+            $query = $this->appendOrderByQuery($query, $this->queryData->orderBy);
         }
-        if ($this->queryData->limit) {
+        if (isset($this->queryData->limit)) {
             $query .= " LIMIT {$this->queryData->limit}";
         }
         return $query;
     }
 
     public function update() {
-        $setClause = $this->setupSetClause($this->queryData->columns);
-        $query = "UPDATE {$this->queryData->table} SET $setClause";
-        if ($this->queryData->conditions) {
-            $conditions = $this->setupConditions($this->queryData->conditions);
-            $query .= " WHERE " . implode(" AND ", $conditions);
+        $set_clause = $this->setupSetClause($this->queryData->columns);
+        $query = "UPDATE {$this->queryData->table} SET $set_clause";
+        if (isset($this->queryData->conditions)) {
+            $query = $this->appendWhereQuery($query, $this->queryData->conditions);
         }
         return $query;
     }
 
     public function delete() {
         $query = "DELETE FROM {$this->queryData->table}";
-        if ($this->queryData->conditions) {
-            $conditions = $this->setupConditions($this->queryData->conditions);
-            $query .= " WHERE " . implode(" AND ", $conditions);
+        if (isset($this->queryData->conditions)) {
+            $query = $this->appendWhereQuery($query, $this->queryData->conditions);
         }
         return $query;
     }
 
-    private function setupConditions($conditions) {
+    private function appendWhereQuery($query, $conditions) {
+        $array_of_conditions = $this->setupConditions($conditions);
+        $query .= " WHERE " . implode(" AND ", $array_of_conditions);
+        return $query;
+    }
+
+    private function appendOrderByQuery($query, $orderBy) {
+        $order_by = $this->setupOrderBy($orderBy);
+        $query .= " ORDER BY {$order_by}";
+        return $query;
+    }
+
+    private function setupConditions(Conditions $conditions) {
         for ($i = 0; $i < sizeof($conditions); $i++) {
             $condition = $conditions[$i];
-            if ($condition) {
-                $conditions[$i] = $condition["column"] . " IS NULL";
+            if ($condition instanceof NullCondition) {
+                $array_of_conditions[$i] = $condition->column . " IS NULL";
             } else {
-                $conditions[$i] = $condition["column"] . " " . $condition["operator"] . " ?";
+                $array_of_conditions[$i] = $condition->column . " " . $condition->operator . " ?";
             }
         }
-        return $conditions;
+        return $array_of_conditions;
     }
 
     private function setupColumns($columns = ["*"]) {
@@ -70,16 +78,12 @@ class QueryBuilder {
     }
 
     private function setupOrderBy(OrderBy $orderBy) {
-        $orderBy = $orderBy->column . " " . $orderBy->direction;
-        return $orderBy;
+        $order_by = $orderBy->column . " " . $orderBy->direction;
+        return $order_by;
     }
 
     private function setupSetClause($columns) {
-        if (sizeof($columns) > 0) {
-            $setClause = implode(", ", array_map(fn($col) => "$col = ?", $columns));
-        } else {
-            $setClause = implode("", array_map(fn($col) => "$col = ?", $columns));
-        }
-        return $setClause;
+        $set_clause = implode(", ", array_map(fn($col) => "$col = ?", $columns));
+        return $set_clause;
     }
 }
