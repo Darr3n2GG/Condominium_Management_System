@@ -58,7 +58,7 @@ class QueryBuilder {
             if ($condition["is_null"]) {
                 $conditions[$i] = $condition["column"] . " IS NULL";
             } else {
-                $conditions[$i] = $conditions["column"] . " " . $conditions["operator"] . " ?";
+                $conditions[$i] = $condition["column"] . " " . $condition["operator"] . " ?";
             }
         }
         return $conditions;

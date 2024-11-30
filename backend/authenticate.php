@@ -5,12 +5,13 @@ session_start();
 $core = new Core;
 
 try {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
     if (!isset($username, $password)) {
         throw new Exception("Please fill both the username and password fields!");
     }
 
-    $username = $_POST["username"];
-    $password = $_POST["password"];
     check_username_exists();
     $hashed_password = get_password_from($username);
     if (password_verify($password, $hashed_password)) {
@@ -33,7 +34,7 @@ function check_username_exists(): bool {
     $query = new Query;
     $query->table = "accounts";
     $query->columns = ["*"];
-    $query->setConditions([["username", "=", false]]);
+    $query->setConditions([["name", "=", false]]);
 
     $result = $core->read($query, [$username]);
     if (!$result) {
@@ -47,7 +48,7 @@ function get_password_from($username): string {
     $query = new Query;
     $query->table = "accounts";
     $query->columns = ["password"];
-    $query->setConditions([["username", "=", false]]);
+    $query->setConditions([["name", "=", false]]);
     $result = $core->read($query, [$username]);
     return $result[0]["password"];
 }
@@ -56,8 +57,8 @@ function get_id_from($username): string {
     global $core;
     $query = new Query;
     $query->table = "accounts";
-    $query->columns = "id";
-    $query->setConditions([["username", "=", false]]);
+    $query->columns = ["id"];
+    $query->setConditions([["name", "=", false]]);
     $result = $core->read($query, [$username]);
     return $result[0]["id"];
 }

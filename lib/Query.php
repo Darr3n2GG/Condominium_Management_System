@@ -2,26 +2,43 @@
 // Data structure for a mysql query
 
 class Query {
-    const ASC = "ASC";
-    const DESC = "DESC";
     public string $table = "";
     public array $columns = [];
     public array $conditions = [];
     public string $limit = "";
-    public array $orderBy = [];
+    public OrderBy $orderBy;
 
-    public function setConditions(array $conditions): void {
-        for ($i = 0; $i < sizeof($conditions); $i++) {
-            $condition = $conditions[$i];
-            $this->conditions[$i] = [
-                "column" => $condition[0],
-                "operator" => $condition[1],
-                "is_null" => $condition[2]
-            ];
-        }
+    public function setConditions($conditions): void {
+        $this->conditions = $conditions;
     }
+}
 
-    public function setOrderBy(string $column, string $direction): void {
-        $this->orderBy = ["column" => $column, "direction" => $direction];
+abstract class Condition {
+    public $column;
+    public $operator;
+
+    public function __construct(string $column, string $operator) {
+        $this->column = $column;
+        $this->operator = $operator;
+    }
+}
+
+class NullCondition {
+    public $column;
+
+    public function __construct(string $column) {
+        $this->column = $column;
+    }
+}
+
+class OrderBy {
+    const ASC = "ASC";
+    const DESC = "DESC";
+    public $column;
+    public $direction;
+
+    public function __construct($column, $direction) {
+        $this->$column = $column;
+        $this->direction = $direction;
     }
 }
