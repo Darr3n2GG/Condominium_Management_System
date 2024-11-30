@@ -25,10 +25,12 @@ if (isset($_SESSION["loggedin"])) {
         <div class="container">
             <a href="home.php" class="logo">Island Crest</a>
             <ul class="nav-links">
-                <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
-                <a href="payment.php" id="paymentButton"><i class="fas fa-cash-register"></i>Payment</a>
-                <a href="profile.php"><i class="fas fa-user-circle"></i><?= htmlspecialchars($userState, ENT_QUOTES) ?></a>
-                <a href="logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <li>
+                    <a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a>
+                    <a href="payment.php" id="paymentButton"><i class="fa-solid fa-credit-card"></i> Payment</a>
+                    <a href="profile.php"><i class="fas fa-user-circle"></i> <?= htmlspecialchars($userState, ENT_QUOTES) ?></a>
+                    <a href="logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
             </ul>
         </div>
     </nav>

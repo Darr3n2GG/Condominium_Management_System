@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("condo.webp");
+    background-image: url("assets/condo.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-size: 100% 123.1%;

@@ -14,7 +14,7 @@
 .navtop div {
 	display: flex;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 	height: 100%;
 }
 .navtop div h1, .navtop div a {
@@ -31,7 +31,7 @@
 	text-decoration-line: none;
 }
 .navtop div a:not(#left){
-	padding: 0 20px;
+	padding: 0 10px;
 	text-decoration: none;
 	color: #c1c4c8;
 	font-weight: bold;
