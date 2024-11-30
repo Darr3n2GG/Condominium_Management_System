@@ -39,9 +39,6 @@
 .navtop div a i {
 	padding: 2px 8px 0 0;
 }
-.navtop div a:hover {
-	color: #eaebed;
-}
 body.loggedin {
 	background-color: #f3f4f7;
 }
@@ -78,6 +75,7 @@ body.loggedin {
 }
 .content > div .table th, .content > div .table td{
     border: 1px, solid, black;
+	padding: 5px 10px;
 }
 .content > div p {
 	padding: 5px;

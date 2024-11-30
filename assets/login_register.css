@@ -46,6 +46,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    box-sizing: border-box;
 }
 
 .form-group input:focus {

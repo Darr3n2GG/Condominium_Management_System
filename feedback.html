@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Island Crest - Feedback</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+        <link href="payment_feedback.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <a href="home.php" class="logo">Island Crest</a>
+                <ul class="nav-links">
+                    <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
+                    <li><a href="payment.php"><i class="fa-solid fa-credit-card"></i> Payment</a></li>
+                    <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
+                    <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    <style>
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .payTitle {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .payInput, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .confirmPayButton {
+            padding: 12px;
+            font-size: 1rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .confirmPayButton:hover {
+            background-color: #388e3c;
+        }
+    </style>
+
+    <div class="content">
+        <h2>Feedback Page</h2>
+        <form method="post">
+            <h1 class="payTitle">Suggestions</h1>
+            <textarea name="suggestions" placeholder="Share your thoughts or suggestions here..." required></textarea>
+            
+            <h1 class="payTitle">Contact Information</h1>
+            <input type="text" name="name" placeholder="Full Name" class="payInput" required>
+            <input type="email" name="email" placeholder="Email Address" class="payInput" required>
+            <input type="tel" name="phone" placeholder="Phone Number" class="payInput" required>
+            
+            <button type="submit" class="confirmPayButton" id="submitFeedback">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
