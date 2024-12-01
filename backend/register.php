@@ -27,6 +27,7 @@ if (preg_match("/^[a-zA-Z0-9]+$/", $_POST["name"]) == 0) {
 		alert("Username is not valid! Username shall only consists of letters and numbers!");
 		window.location.href = "../frontend/register.html";
 	</script>';
+    exit;
 }
 
 if (strlen($_POST["password"]) > 20 || strlen($_POST["password"]) < 5) {
@@ -34,6 +35,7 @@ if (strlen($_POST["password"]) > 20 || strlen($_POST["password"]) < 5) {
 		alert("Password must be between 5 and 20 characters long!");
 		window.location.href = "../frontend/register.html";
 	</script>';
+    exit;
 }
 
 $core = new Core;
