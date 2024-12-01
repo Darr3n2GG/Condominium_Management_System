@@ -1,3 +1,17 @@
+<?php
+$DATABASE_HOST = "localhost";
+$DATABASE_USER = "root";
+$DATABASE_PASS = "";
+$DATABASE_NAME = "condodb";
+$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+	exit("Failed to connect to MySQL: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM bills";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +38,36 @@
         <h2>Payment Management Page</h2>
         <div>
             <p>Payments are below:</p>
+            <table class="table">
+                <thead> 
+                <tr>
+                    <th>Bill id</th>
+                    <th>Payment id</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Remarks</th>
+                </tr> 
+                </thead>
+                <tbody>
+                    <?php
+                    // Check if rows exist
+                    if ($result->num_rows > 0) {
+                        // Output each row as a table row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['bill_id'] . "</td>"; // Adjust column names as per your database
+                            echo "<td>" . $row['payment_id'] . "</td>";
+                            echo "<td>" . $row['amount'] . "</td>";
+                            echo "<td>" . $row['date'] . "</td>";
+                            echo "<td>" . $row['remarks'] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>No data found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
