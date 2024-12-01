@@ -4,13 +4,13 @@ const close = document.querySelector(".closeModal");
 const submit = document.querySelector(".confirmPayButton");
 const paymentForm = document.forms["paymentForm"]
 
-// payButton.addEventListener("click", () => {
-//     payment.toggleClass("active");
-// });
+payButton.addEventListener("click", () => {
+    payment.style.display = "flex";
+});
 
-// close.addEventListener("click", () => {
-//     payment.toggleClass("active");;
-// });
+close.addEventListener("click", () => {
+    payment.style.display = "none";
+});
 
 paymentForm["expiry_year"].min = new Date().getFullYear();
 paymentForm["expiry_year"].max = new Date().getFullYear() + 10;

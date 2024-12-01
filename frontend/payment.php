@@ -34,8 +34,7 @@ if ($payment_row) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Island Crest - Payment</title>
-    <link href="../assets/home.css" rel="stylesheet" type="text/css">
-    <link href="../assets/payment.css" rel="stylesheet" type="text/css">
+    <link href="../assets/payment_feedback.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
@@ -44,12 +43,10 @@ if ($payment_row) {
         <div class="container">
             <a href="home.php" class="logo">Island Crest</a>
             <ul class="nav-links">
-            <li>
-                <a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a>
-                <a href="payment.php"><i class="fas fa-credit-card"></i> Payment</a>
-                <a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a>
-                <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </li>
+                <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
+                <li><a href="payment.php"><i class="fas fa-credit-card"></i> Payment</a></li>
+                <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -81,69 +78,30 @@ if ($payment_row) {
             <?php } ?>
         </table>
     </header>
-    <button class="payButton">Pay here</button>
-    <!-- <?php if ($payment_row) { ?>
-        
-        <div class="payment">
-            <form name="paymentForm" action="../backend/paymentModel.php" method="post">
-                <h1 class="payTitle">Card Information</h1>
-                <div class="cardIcons"> Card icon missing !!!
-    <img src="./img/Contact/visa.png" width="40" alt="" class="cardIcon">
-    <img src="./img/Contact/master.png" alt="" width="40" class="cardIcon">
-    </div>
-    <input type="number" name="card_number" class="payInput" placeholder="Card Number" required>
-    <div class="cardInfo">
-        <input type="number" name="expiry_month" placeholder="mm" class="payInput sm" min="1" max="12" required>
-        <input type="number" name="expiry_year" placeholder="yyyy" class="payInput sm" required>
-        <input type="number" name="cvv" placeholder="cvv" class="payInput sm" required>
-    </div>
-    <button type="submit" class="confirmPayButton">Checkout!</button>
-    <button type="button" class="closeModal">Cancel</button>
-    </form>
-    </div>
-<?php } ?> -->
-    <div class="payment-modal"> <!--Class "hidden" not found-->
-        <div class="payment-container">
-            <h1 class="payTitle">Personal Information</h1>
-            <form method="post">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" class="payInput" required>
 
-                <label for="phone">Phone Number</label>
-                <input type="number" id="phone" name="phone" placeholder="+6012 345 6781" class="payInput" required>
-
-                <h1 class="payTitle">Payment Details</h1>
-                <input type="number" name="amount" placeholder="RM" class="payInput sm" required>
-                <input type="text" name="remarks" placeholder="Remarks" class="payInput">
-
-                <h1 class="payTitle">Card Information</h1>
-                <input type="text" name="card_number" placeholder="Card Number" class="payInput" maxlength="16" required>
-                <div class="cardInfo">
-                    <input type="text" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
-                    <input type="text" name="expiry_year" placeholder="YYYY" class="payInput sm" maxlength="4" required>
-                    <input type="text" name="cvv" placeholder="CVV" class="payInput sm" maxlength="3" required>
-                </div>
-                <button type="submit" class="confirmPayButton">Confirm Payment</button>
-                <button type="button" class="closeModal">Cancel</button>
-            </form>
-        </div>
-    </div>
     <?php if ($payment_row) { ?>
-        <h1 class="payTitle">Card Information</h1>
-        <div class="payment-modal"> <!--Class "hidden" not found-->
-            <form name="paymentForm" action="../backend/paymentModel.php" method="post">
-                <input type="text" name="card_number" placeholder="Card Number" class="payInput" maxlength="16" required>
-                <div class="cardInfo">
-                    <input type="text" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
-                    <input type="text" name="expiry_year" placeholder="YYYY" class="payInput sm" maxlength="4" required>
-                    <input type="text" name="cvv" placeholder="CVV" class="payInput sm" maxlength="3" required>
+        <button class="payButton">Pay here</button>
+
+        <?php if ($payment_row) { ?>
+            <div class="payment-modal hidden">
+                <div class="payment-container">
+                    <h1 class="payTitle">Card Information</h1>
+                    <form name="paymentForm" action="../backend/paymentModel.php" method="post">
+                        <input type="text" name="card_number" placeholder="Card Number" class="payInput" maxlength="16" required>
+                        <div class="cardInfo">
+                            <input type="text" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
+                            <input type="text" name="expiry_year" placeholder="YYYY" class="payInput sm" maxlength="4" required>
+                            <input type="text" name="cvv" placeholder="CVV" class="payInput sm" maxlength="3" required>
+                        </div>
+                        <button type="submit" class="confirmPayButton">Confirm Payment</button>
+                        <button type="button" class="closeModal">Cancel</button>
+                    </form>
                 </div>
-                <button type="submit" class="confirmPayButton">Confirm Payment</button>
-                <button type="button" class="closeModal">Cancel</button>
-            </form>
-        </div>
+            </div>
+        <?php } ?>
+        <script src="../scripts/payment.js"></script>
     <?php } ?>
-    <script src="../scripts/payment.js"></script>
+
 </body>
 
 </html>
