@@ -28,7 +28,6 @@ $result = $conn->query($sql);
     <nav class="navtop">
         <div>
             <a href="ad-home.html" id="left">Island Crest</a>
-            <a href="feedback.html"><i class="fa-solid fa-comment"></i>Feedback</a>
             <a href="ad-payment.php"><i class="fa-solid fa-credit-card"></i>Manage Payment</a>
             <a href="ad-user.html"><i class="fas fa-user-circle"></i>Manage User</a>
             <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
