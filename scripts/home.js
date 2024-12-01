@@ -19,6 +19,5 @@ if (!loggedIn) {
     profileButton.style.display = "none";
     feedbackButton.style.display = "none";
 } else {
-    logInButton.style.gap = "0px";
     logInButton.style.display = "none";
 }
