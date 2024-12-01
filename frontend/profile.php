@@ -25,17 +25,20 @@ $house_number = $row[0]["house_number"];
 <head>
     <meta charset="utf-8">
     <title>World Residence Centre</title>
-    <link href="../assets/style.css" rel="stylesheet" type="text/css">
+    <link href="../assets/profile.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body class="loggedin">
-    <nav class="navtop">
-        <div>
-            <a href="home.php" id="left">Island Crest</a>
-            <a href="feedback.html"><i class="fa-solid fa-comment"></i>Feedback</a>
-            <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
-            <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    <nav class="navbar">
+        <div class="container">
+            <a href="home.php" class="logo">Island Crest</a>
+            <ul class="nav-links">
+                <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
+                <li><a href="payment.php"><i class="fas fa-credit-card"></i> Payment</a></li>
+                <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
         </div>
     </nav>
     <div class="content">
