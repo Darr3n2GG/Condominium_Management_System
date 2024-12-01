@@ -71,17 +71,34 @@ function check_name_exists() {
     return $result;
 }
 
+function check_is_admin () {
+    global $core;
+    $admin = $_POST["admin"];
+
+    $query = new Query;
+    $query->table = "accounts";
+    $query->columns = ["id"];
+    $query->conditions = new Conditions([
+        new Condition("name", "=")
+    ]);
+
+    $result = $core->read($query, [$admin]);
+    return $result;
+}
+
 function insert_new_account() {
     global $core;
     $name = $_POST["name"];
     $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $email = $_POST["email"];
+    $admin = $_POST["admin"];
+
 
     $query = new Query;
     $query->table = "accounts";
-    $query->columns = ["name", "password", "email"];
+    $query->columns = ["name", "password", "email", "admin"];
 
-    $core->create($query, [$name, $hashed_password, $email]);
+    $core->create($query, [$name, $hashed_password, $email, $admin]);
 
     echo '<script type="text/javascript">
             alert("Log in success! Redirecting to log in page...");
