@@ -29,7 +29,7 @@ $result = $conn->query($sql);
         <div>
             <a href="ad-home.html" id="left">Island Crest</a>
             <a href="ad-payment.php"><i class="fa-solid fa-credit-card"></i>Manage Payment</a>
-            <a href="ad-user.html"><i class="fas fa-user-circle"></i>Manage User</a>
+            <a href="ad-user.php"><i class="fas fa-user-circle"></i>Manage User</a>
             <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
         </div>
     </nav>
@@ -62,7 +62,7 @@ $result = $conn->query($sql);
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='3'>No data found</td></tr>";
+                        echo "<tr><td colspan='5'>No data found</td></tr>";
                     }
                     ?>
                 </tbody>
