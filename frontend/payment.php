@@ -89,7 +89,7 @@ if ($payment_row) {
                     <form name="paymentForm" action="../backend/paymentModel.php" method="post">
                         <input type="number" name="card_number" placeholder="Card Number" class="payInput" required>
                         <div class="cardInfo">
-                            <input type="number" name="expiry_month" placeholder="MM" class="payInput sm" required>
+                            <input type="number" name="expiry_month" placeholder="MM" class="payInput sm" min="1" max="12" required>
                             <input type="number" name="expiry_year" placeholder="YYYY" class="payInput sm" required>
                             <input type="number" name="cvv" placeholder="CVV" class="payInput sm" required>
                         </div>
