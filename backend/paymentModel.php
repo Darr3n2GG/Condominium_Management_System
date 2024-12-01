@@ -18,14 +18,14 @@ function insertCardInformation() {
     //Don't store cvv according to PCI DSS (Payment Card Industry Data Security Standards)
 
     $query = new Query;
-    $query->table = "accounts";
-    $query->columns = ["card_number", "expiry_month", "expiry_year"];
+    $query->table = "payments";
+    $query->columns = ["card_number", "expiry_month", "expiry_year", "paid"];
     $query->conditions = new Conditions([
         new NullCondition("card_number"),
         new NullCondition("expiry_month"),
         new NullCondition("expiry_year")
     ]);
-    $params = [$card_number, $expiry_month, $expiry_year];
+    $params = [$card_number, $expiry_month, $expiry_year, 1];
     $core->update($query, $params);
 
     echo '<script type="text/javascript">

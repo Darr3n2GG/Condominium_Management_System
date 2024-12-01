@@ -18,6 +18,4 @@ if (!loggedIn) {
     paymentButton.style.display = "none";
     profileButton.style.display = "none";
     feedbackButton.style.display = "none";
-} else {
-    logInButton.style.display = "none";
 }

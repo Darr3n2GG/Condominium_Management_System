@@ -23,7 +23,9 @@ $loggedIn = isset($_SESSION["loggedin"]);
                 <li><a href="payment.php" id="paymentButton"><i class="fas fa-credit-card"></i> Payment</a></li>
                 <li><a href="profile.php" id="profileButton"><i class="fas fa-user-circle"></i> Profile</a></li>
                 <li><a href="../backend/logout.php" id="logOutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                <li><a href="login.html" id="logInButton"><i class="fas fa-user-circle"></i> Login</a></li>
+                <?php if (!$loggedIn) { ?>
+                    <li><a href="login.html" id="logInButton"><i class="fas fa-user-circle"></i> Login</a></li>
+                <?php } ?>
             </ul>
         </div>
     </nav>

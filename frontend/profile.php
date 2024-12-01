@@ -9,7 +9,7 @@ $core = new Core;
 
 $query = new Query;
 $query->table = "accounts";
-$query->columns = ["email", "house_number"];
+$query->columns = ["email", "house_number", "phone_number"];
 $query->conditions = new Conditions([
     new Condition("id", "=")
 ]);
@@ -17,6 +17,7 @@ $query->conditions = new Conditions([
 $row = $core->read($query, [$_SESSION["id"]]);
 $email = $row[0]["email"];
 $house_number = $row[0]["house_number"];
+$phone_number = $row[0]["phone_number"];
 ?>
 
 <!DOCTYPE html>
@@ -52,12 +53,12 @@ $house_number = $row[0]["house_number"];
                     <td><?= htmlspecialchars($email, ENT_QUOTES) ?></td>
                 </tr>
                 <tr>
+                    <td>Phone Number:</td>
+                    <td><?= htmlspecialchars($phone_number, ENT_QUOTES) ?></td>
+                </tr>
+                <tr>
                     <td>House Address:</td>
-                    <td><?php if ($house_number != null) {
-                            echo htmlspecialchars($house_number, ENT_QUOTES);
-                        } else {
-                            echo "not set";
-                        } ?></td>
+                    <td><?= htmlspecialchars($house_number, ENT_QUOTES); ?></td>
                 </tr>
             </table>
         </div>
