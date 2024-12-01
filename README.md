@@ -1,4 +1,4 @@
-# System_Management_Web
+# Condominium Management System
 
 A Login and Register system for PSC web development project.
 

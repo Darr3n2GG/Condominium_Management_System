@@ -19,7 +19,7 @@ $loggedIn = isset($_SESSION["loggedin"]);
         <div class="container">
             <a href="home.php" class="logo">Island Crest</a>
             <ul class="nav-links">
-                <li><a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a></li>
+                <li><a href="feedback.html" id="feedbackButton"><i class="fa-solid fa-comment"></i> Feedback</a></li>
                 <li><a href="payment.php" id="paymentButton"><i class="fas fa-cash-register"></i>Payment</a></li>
                 <li><a href="profile.php" id="profileButton"><i class="fas fa-user-circle"></i>Profile</a></li>
                 <li><a href="login.html" id="logInButton"><i class="fas fa-user-circle"></i>Login</a></li>

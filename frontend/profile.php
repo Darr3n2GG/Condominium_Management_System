@@ -32,9 +32,9 @@ $house_number = $row[0]["house_number"];
 <body class="loggedin">
     <nav class="navtop">
         <div>
-            <h1>World Residence Centre</h1>
+            <a href="home.php" id="left">Island Crest</a>
+            <a href="feedback.html"><i class="fa-solid fa-comment"></i>Feedback</a>
             <a href="payment.php"><i class="fa-solid fa-credit-card"></i>Payment</a>
-            <a href="home.php"><i class="fa-solid fa-house"></i>Home</a>
             <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
         </div>
     </nav>

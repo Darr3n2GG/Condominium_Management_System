@@ -2,6 +2,7 @@ const logOutButton = document.getElementById("logOutButton");
 const paymentButton = document.getElementById("paymentButton");
 const logInButton = document.getElementById("logInButton");
 const profileButton = document.getElementById("profileButton");
+const feedbackButton = document.getElementById("feedbackButton");
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -16,7 +17,8 @@ if (!loggedIn) {
     logOutButton.style.display = "none";
     paymentButton.style.display = "none";
     profileButton.style.display = "none";
+    feedbackButton.style.display = "none";
 } else {
-    logInButton.style.display = "none";
     logInButton.style.gap = "0px";
+    logInButton.style.display = "none";
 }

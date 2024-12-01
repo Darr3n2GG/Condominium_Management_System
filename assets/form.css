@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("condo.webp");
+    background-image: url("condo_garden.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-size: 100% 123.1%;
@@ -46,6 +46,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    box-sizing: border-box;
 }
 
 .form-group input:focus {
