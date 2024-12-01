@@ -34,7 +34,7 @@ if ($payment_row) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Island Crest - Payment</title>
-    <link href="../assets/payment_feedback.css" rel="stylesheet" type="text/css">
+    <link href="../assets/payment.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
@@ -87,11 +87,11 @@ if ($payment_row) {
                 <div class="payment-container">
                     <h1 class="payTitle">Card Information</h1>
                     <form name="paymentForm" action="../backend/paymentModel.php" method="post">
-                        <input type="text" name="card_number" placeholder="Card Number" class="payInput" maxlength="16" required>
+                        <input type="number" name="card_number" placeholder="Card Number" class="payInput" required>
                         <div class="cardInfo">
-                            <input type="text" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
-                            <input type="text" name="expiry_year" placeholder="YYYY" class="payInput sm" maxlength="4" required>
-                            <input type="text" name="cvv" placeholder="CVV" class="payInput sm" maxlength="3" required>
+                            <input type="number" name="expiry_month" placeholder="MM" class="payInput sm" required>
+                            <input type="number" name="expiry_year" placeholder="YYYY" class="payInput sm" required>
+                            <input type="number" name="cvv" placeholder="CVV" class="payInput sm" required>
                         </div>
                         <button type="submit" class="confirmPayButton">Confirm Payment</button>
                         <button type="button" class="closeModal">Cancel</button>
