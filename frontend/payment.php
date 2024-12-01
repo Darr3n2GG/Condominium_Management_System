@@ -34,7 +34,7 @@ if ($payment_row) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Island Crest - Payment</title>
-    <link href="../assets/style.css" rel="stylesheet" type="text/css">
+    <link href="../assets/home.css" rel="stylesheet" type="text/css">
     <link href="../assets/payment.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
@@ -44,10 +44,12 @@ if ($payment_row) {
         <div class="container">
             <a href="home.php" class="logo">Island Crest</a>
             <ul class="nav-links">
+            <li>
                 <a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a>
-                <a href="payment.php"><i class="fas fa-credit-card"></i>Payment</a>
-                <a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-                <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a href="payment.php"><i class="fas fa-credit-card"></i> Payment</a>
+                <a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
             </ul>
         </div>
     </nav>
@@ -56,7 +58,7 @@ if ($payment_row) {
         <p> <?php if ($payment_row) {
                 echo "Your payment history are below:";
             } else {
-                echo "No payment.";
+                echo "No previous payment.";
             } ?> </p>
         <table class="table">
             <?php if ($payment_row) { ?>
@@ -79,9 +81,9 @@ if ($payment_row) {
             <?php } ?>
         </table>
     </header>
-
+    <button class="payButton">Pay here</button>
     <!-- <?php if ($payment_row) { ?>
-        <button class="payButton">Pay here</button>
+        
         <div class="payment">
             <form name="paymentForm" action="../backend/paymentModel.php" method="post">
                 <h1 class="payTitle">Card Information</h1>
@@ -100,7 +102,7 @@ if ($payment_row) {
     </form>
     </div>
 <?php } ?> -->
-    <div class="payment-modal hidden"> <!--Class "hidden" not found-->
+    <div class="payment-modal"> <!--Class "hidden" not found-->
         <div class="payment-container">
             <h1 class="payTitle">Personal Information</h1>
             <form method="post">
@@ -115,10 +117,6 @@ if ($payment_row) {
                 <input type="text" name="remarks" placeholder="Remarks" class="payInput">
 
                 <h1 class="payTitle">Card Information</h1>
-                <div class="cardIcons">
-                    <img src="./img/Contact/visa.png" alt="Visa" width="40" class="cardIcon">
-                    <img src="./img/Contact/master.png" alt="MasterCard" width="40" class="cardIcon">
-                </div>
                 <input type="text" name="card_number" placeholder="Card Number" class="payInput" maxlength="16" required>
                 <div class="cardInfo">
                     <input type="text" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
@@ -134,10 +132,6 @@ if ($payment_row) {
         <h1 class="payTitle">Card Information</h1>
         <div class="payment-modal"> <!--Class "hidden" not found-->
             <form name="paymentForm" action="../backend/paymentModel.php" method="post">
-                <div class="cardIcons">
-                    <img src="./img/Contact/visa.png" alt="Visa" width="40" class="cardIcon">
-                    <img src="./img/Contact/master.png" alt="MasterCard" width="40" class="cardIcon">
-                </div>
                 <input type="text" name="card_number" placeholder="Card Number" class="payInput" maxlength="16" required>
                 <div class="cardInfo">
                     <input type="text" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
