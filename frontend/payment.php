@@ -45,7 +45,7 @@ if ($payment_row) {
             <a href="home.php" class="logo">Island Crest</a>
             <ul class="nav-links">
                 <a href="feedback.html"><i class="fa-solid fa-comment"></i> Feedback</a>
-                <a href="payment.php"><i class="fas fa-user-circle"></i>Payment</a>
+                <a href="payment.php"><i class="fas fa-credit-card"></i>Payment</a>
                 <a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
                 <a href="../backend/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </ul>
