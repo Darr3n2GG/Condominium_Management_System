@@ -61,9 +61,9 @@ function check_name_exists() {
     $query = new Query;
     $query->table = "accounts";
     $query->columns = ["id"];
-    $query->conditions = new Conditions(
-        [new Condition("name", "=")]
-    );
+    $query->conditions = new Conditions([
+        new Condition("name", "=")
+    ]);
 
     $result = $core->read($query, [$name]);
     return $result;
